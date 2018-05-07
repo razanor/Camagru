@@ -11,10 +11,19 @@
 
 <body>
 
-<header>
-	<h1>Camagru</h1>
+<!-- Top navigation -->
+<div class="topnav">
+
+  <!-- Centered header -->
+<div class="topnav-centered">
+	<a style="pointer-events: none; cursor: default;" href="" id="header" class="active">Camagru</a>
+</div>
+
+<!-- Right-aligned links -->
+<div class="topnav-right">
 	<a class="log" href="/login/">Log in</a>
-</header>
+</div>
+</div>
 
 <div class="row">
 <?php foreach($pictures as $picture): ?> 

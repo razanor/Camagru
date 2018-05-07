@@ -10,33 +10,65 @@ body {
 	font-family: sans-serif;
 }
 
-header {
+
+.topnav {
 	position: relative;
-	background-color: #F0F0F0;
-	width: 100%;
-	height: 120px;
-	border-bottom: 1px solid#FF9966;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
-h1 {
-	margin: 0;
-	padding: 40px;
-	width: 160px;
-	color: #FF9966;
-	font-size: 40px;
-}
-
-a {
+	overflow: hidden;
+	background: #F0F0F0;
+	border-bottom: 1px solid #FF9966; 
+  }
+  
+.topnav a {
+	float: left;
 	color: black;
-}
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+	font-size: 22px;
+  }
 
-a:hover {
+#header {
+	  font-size: 30px;
+  }
+  
+.topnav a:hover {
 	background-color: #FF9966;
 	text-decoration: none;
+	border-radius: 10px;
+  }
+  
+.topnav a.active {
+	background-color: #FF9966;
+	border-radius: 8px;
+	color: white;
+  }
+  
+.topnav-centered a {
+	float: none;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+  }
+  
+.topnav-right {
+	float: right;
+  }
+  
+  /* Responsive navigation menu (for mobile devices) */
+@media screen and (max-width: 600px) {
+.topnav a, .topnav-right {
+	  float: none;
+	  display: block;
+ }
+	
+.topnav-centered a {
+	position: relative;
+	top: 0;
+	left: 0;
+	transform: none;
 }
+  }
 
 .row {
     display: -ms-flexbox; 
@@ -58,7 +90,7 @@ a:hover {
     vertical-align: middle;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 1500px) {
     .column {
         -ms-flex: 50%;
         flex: 50%;
@@ -66,7 +98,7 @@ a:hover {
     }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 800px) {
     .column {
         -ms-flex: 100%;
         flex: 100%;
@@ -87,16 +119,6 @@ footer > p {
 	font-style: italic;
 	padding: 10px;
 }
-
-.log {
-	position: absolute;
-	right: 10px;
-	padding: 8px;
-	font-size: 25px;
-	text-decoration: none;
-}
-
-/*login, registration*/
 
 .main-login {
 	width: 100%;
@@ -149,32 +171,6 @@ footer > p {
 	height: 560px;
 }
 
-/*user*/
-
-.cabinet {
-	position: absolute;
-	right: 120px;
-	padding: 8px;
-	font-size: 25px;
-	text-decoration: none;
-}
-
-.logout {
-	position: absolute;
-	right: 20px;
-	padding: 8px;
-	font-size: 25px;
-	text-decoration: none;
-}
-
-.add {
-	position: absolute;
-	left: 20px;
-	padding: 8px;
-	font-size: 25px;
-	text-decoration: none;
-}
-
 /*edit*/
 
 .edit-log {
@@ -223,6 +219,7 @@ footer > p {
 .update > p {
 	color: green;
 }
+
 
 
 

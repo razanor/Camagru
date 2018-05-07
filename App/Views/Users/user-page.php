@@ -11,12 +11,23 @@
 
 <body>
 
-<header>
-	<h1>Camagru</h1>
-	<a class="cabinet" href="/edit/">Cabinet</a>
-	<a class="logout" href="/logout/">Log out</a>
+<!-- Top navigation -->
+<div class="topnav">
+	  <!-- Centered header -->
+	<div class="topnav-centered">
+		<a style="pointer-events: none; cursor: default;" href="" id="header" class="active">Camagru</a>
+	</div>
+
+	<!-- Left-aligned links (default) -->
 	<a class="add" href="/add/">Add photo</a>
-</header>
+
+	 <!-- Right-aligned links -->
+	<div class="topnav-right">
+		<a class="cabinet" href="/edit/">Cabinet</a>
+		<a class="logout" href="/logout/">Log out</a>
+	</div>
+
+</div>
 
 <div class="row">
 <?php foreach($pictures as $picture): ?> 

@@ -11,10 +11,19 @@
 
 <body>
 
-<header>
-	<h1>Camagru</h1>
-	<a class="log" href="/"><img src="http://127.0.0.1:8080/App/Views/img/gallery.png" title="Gallery"  width="100px" height="100px"></a>
-</header>
+<!-- Top navigation -->
+<div class="topnav">
+
+  <!-- Centered header -->
+<div class="topnav-centered">
+	<a style="pointer-events: none; cursor: default;" href="" id="header" class="active">Camagru</a>
+</div>
+
+<!-- Right-aligned links -->
+<div class="topnav-right">
+<a class="log" href="/">Gallery</a>
+</div>
+</div>
 
 <div class="main-login">
 	<form class="login-form" action="" method="post">
