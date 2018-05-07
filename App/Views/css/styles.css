@@ -39,9 +39,9 @@ a:hover {
 }
 
 .row {
-    display: -ms-flexbox; /* IE10 */
+    display: -ms-flexbox; 
     display: flex;
-    -ms-flex-wrap: wrap; /* IE10 */
+    -ms-flex-wrap: wrap; 
     flex-wrap: wrap;
     padding: 0 4px;
 }
@@ -50,7 +50,7 @@ a:hover {
     -ms-flex: 25%; 
     flex: 25%;
     max-width: 25%;
-    padding: 0 4px;
+    padding: 9px 9px;
 }
 
 .column img {
