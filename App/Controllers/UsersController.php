@@ -38,7 +38,7 @@ class UsersController
             }
 
             if (Users::checkUserExists($name)) {
-                $errors[] = "This username is already exist";
+                $errors[] = "This username is already exists";
             }
 
             if (strcmp($password, $password_repeat) !== 0) {
@@ -125,7 +125,7 @@ class UsersController
                 $errors[] = "The username should be more than 4 symbols";
             }
             if (Users::checkUserExists($name)) {
-                $errors[] = "This username is already exist";
+                $errors[] = "This username is already exists";
             }
         }
 
@@ -136,7 +136,7 @@ class UsersController
                 $errors[] = "Wrong email";
             }
             if (Users::checkEmailExists($email)) {
-                $errors[] = "This email is already exist";
+                $errors[] = "This email is already exists";
             }
         }
 
