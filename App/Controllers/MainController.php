@@ -9,20 +9,13 @@ class MainController
         
         $pictures = Pictures::getPhoto();
         
-        foreach ($pictures as $picture) {
-            echo $picture['name'];
-        }
-        // here
-        
         require_once (ROOT. '/App/Views/index.php');
         return true;
     }
 
     public function actionUser() {
 
-        $userId = Users::checkLogged();
-        
-        $user = Users::getUsernameById($userId);
+        $pictures = Pictures::getPhoto();
 
         require_once (ROOT. '/App/Views/Users/user-page.php');
         return true;

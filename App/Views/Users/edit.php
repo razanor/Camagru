@@ -13,7 +13,7 @@
 
 <header>
 	<h1>Camagru</h1>
-	<a class="edit-log" href="/"><img src="http://127.0.0.1:8080/App/Views/img/gallery.png" title="Gallery"  width="100px" height="100px"></a>
+	<a class="edit-log" href="/user-page/"><img src="http://127.0.0.1:8080/App/Views/img/gallery.png" title="Gallery"  width="100px" height="100px"></a>
 	<a class="logout" href="/logout/">Log out</a>
 	<a class="add" href="/add/">Add photo</a>
 </header>

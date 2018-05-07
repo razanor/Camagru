@@ -30,8 +30,10 @@ class PicturesController
                         $fileNameNew = uniqid('', true).".".$fileActualExt;
                         $fileDestination = ROOT. '/uploads/' .$fileNameNew;
                         move_uploaded_file($fileTmpName, $fileDestination);
-                         $result = Pictures::addPhoto($fileDestination);
-                        header ("Location: /");
+                        $fileDestination = substr(strrchr($fileDestination, "/"), 1);
+                        $fileDestination = $_SERVER['HTTP_ORIGIN'] . '/uploads/' .$fileNameNew;
+                        $result = Pictures::addPhoto($fileDestination);
+                        header ("Location: /user-page/");
                     } else {
                         echo "Your file is too big!";
                     }

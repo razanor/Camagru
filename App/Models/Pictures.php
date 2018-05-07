@@ -18,6 +18,9 @@ class Pictures
         return $result->execute();
     }
 
+    /**
+     * Get
+     */
     public function getPhoto() {
 
         $db = Db::getConnection();

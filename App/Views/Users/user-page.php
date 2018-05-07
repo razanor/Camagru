@@ -19,13 +19,9 @@
 </header>
 
 <div class="main">
-	<img class="img" src="http://127.0.0.1:8080/App/Views/img/test.jpeg">
-	<img class="img" src="http://127.0.0.1:8080/App/Views/img/test.jpeg">
-	<img class="img" src="http://127.0.0.1:8080/App/Views/img/test.jpeg">
-	<img class="img" src="http://127.0.0.1:8080/App/Views/img/test.jpeg">
-	<img class="img" src="http://127.0.0.1:8080/App/Views/img/test.jpeg">
-	<img class="img" src="http://127.0.0.1:8080/App/Views/img/test.jpeg">
-	<img class="img" src="http://127.0.0.1:8080/App/Views/img/test.jpeg">
+	<?php foreach($pictures as $picture): ?> 
+	<img class="img" src="<?php echo $picture['name']; ?>">
+	<?php endforeach; ?>
 	
 </div>
 
