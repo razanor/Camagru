@@ -18,11 +18,12 @@
 	<a class="add" href="/add/">Add photo</a>
 </header>
 
-<div class="main">
-	<?php foreach($pictures as $picture): ?> 
-	<img class="img" src="<?php echo $picture['name']; ?>">
-	<?php endforeach; ?>
-	
+<div class="row">
+<?php foreach($pictures as $picture): ?> 
+		<div class="column">
+	<img class="img" src="<?php echo $picture['name']; ?>" style="width:100%">
+	</div>
+<?php endforeach; ?>
 </div>
 
 <footer>
