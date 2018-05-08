@@ -4,6 +4,47 @@ include_once ROOT . '/App/Models/Users.php';
 
 class UsersController
 {
+    private function mailSend($name, $email, $hash)
+    {
+        $to = $email; // Send email to our user
+        $encoding = "utf-8";
+        $subject = 'Signup | Verification'; // Give the email a subject
+        $from_name = "Camagru";
+        $from_mail = "nrepak@student.unit.ua";
+
+        $message = '
+        
+       Thanks for signing up!
+       Your account has been created, you can login with the following credentials after you have activated your account by pressing the url below.
+        
+       ------------------------
+       Username: '.$name.'
+       ------------------------
+        
+       Please click this link to activate your account:
+       http://www.yourwebsite.com/verify.php?email='.$email.'&hash='.$hash.'
+        
+       '; // Our message above including the link
+    
+        // Set preferences for Subject field
+        $subject_preferences = array(
+            "input-charset" => $encoding,
+            "output-charset" => $encoding,
+            "line-length" => 76,
+            "line-break-chars" => "\r\n"
+        );
+    
+        // Set mail header
+        $header = "Content-type: text/html; charset=".$encoding." \r\n";
+        $header .= "From: ".$from_name." <".$from_mail."> \r\n";
+        $header .= "MIME-Version: 1.0 \r\n";
+        $header .= "Content-Transfer-Encoding: 8bit \r\n";
+        $header .= "Date: ".date("r (T)")." \r\n";
+        $header .= iconv_mime_encode("Subject", $subject, $subject_preferences);
+                          
+        mail($to, $subject, $message, $header); // Send our email
+    }
+
    /**
     * Register
     */
@@ -47,7 +88,12 @@ class UsersController
 
 
             if (empty($errors)) {
-                $result = Users::register($name, $email, $password);
+                $hash = md5(rand(0,1000));
+                self::mailSend($name, $email, $hash);
+
+                // here
+                die;
+                $result = Users::register($name, $email, $password, $hash);
             }
         }
 

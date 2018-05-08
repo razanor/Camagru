@@ -62,18 +62,19 @@ class Users
 
     }
   
-    public static function register($name, $email, $password) {
+    public static function register($name, $email, $password, $hash) {
 
       $db = Db::getConnection();
       $password = hash("whirlpool", $password);
 
-      $sql = 'INSERT INTO users (username, email, password) '
-              . 'VALUES (:name, :email, :password)';
+      $sql = 'INSERT INTO users (username, email, password, hash) '
+              . 'VALUES (:name, :email, :password, :hash)';
 
       $result = $db->prepare($sql);
       $result->bindParam(':name', $name, PDO::PARAM_STR);
       $result->bindParam(':email', $email, PDO::PARAM_STR);
       $result->bindParam(':password', $password, PDO::PARAM_STR);
+      $result->bindParam(':hash', $hash, PDO::PARAM_STR);
 
       return $result->execute();
 
