@@ -153,7 +153,10 @@ class UsersController
         }
 
         if (empty($errors) && $flag == 1)  {
-            $result = Users::edit($userId, $name, $email, hash("whirlpool", $password));
+            if (isset($_POST['submit_password'])) {
+                $password = hash("whirlpool", $password);
+            }
+            $result = Users::edit($userId, $name, $email, $password);
         }
         require_once (ROOT. '/App/Views/Users/edit.php');
         return true;

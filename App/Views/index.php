@@ -28,7 +28,7 @@
 <div class="row">
 <?php foreach($pictures as $picture): ?> 
 		<div class="column">
-	<img class="img" src="<?php echo $picture['name']; ?>" style="width:100%">
+	<img class="img" src="<?php echo $picture['path']; ?>" style="width:100%">
 	</div>
 <?php endforeach; ?>
 </div>

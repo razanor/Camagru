@@ -9,7 +9,7 @@ class Pictures
 
         $db = Db::getConnection();
   
-        $sql = 'INSERT INTO images (name) '
+        $sql = 'INSERT INTO images (path) '
                 . 'VALUES (:path)';
   
         $result = $db->prepare($sql);
