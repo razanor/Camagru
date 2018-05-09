@@ -89,10 +89,10 @@ class UsersController
 
             if (empty($errors)) {
                 $hash = md5(rand(0,1000));
-                self::mailSend($name, $email, $hash);
+                //self::mailSend($name, $email, $hash);
 
                 // here
-                die;
+                //die;
                 $result = Users::register($name, $email, $password, $hash);
             }
         }
@@ -107,7 +107,6 @@ class UsersController
     public function actionLogin() {
         
         $name = '';
-
         if (isset($_POST['submit'])) {
             $name = $_POST['name'];
             $password = $_POST['password'];

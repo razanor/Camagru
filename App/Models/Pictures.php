@@ -5,7 +5,7 @@ class Pictures
     /**
      * Add
      */
-    public function addPhoto($path) {
+    public static function addPhoto($path) {
 
         $db = Db::getConnection();
   
@@ -21,7 +21,7 @@ class Pictures
     /**
      * Get
      */
-    public function getPhoto() {
+    public static function getPhoto() {
 
         $db = Db::getConnection();
 
