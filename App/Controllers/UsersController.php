@@ -16,7 +16,7 @@ class UsersController
         
        Thanks for signing up!
        Your account has been created, you can login with the following credentials after you have activated your account by pressing the url below.
-        
+       
        ------------------------
        Username: '.$name.'
        ------------------------
