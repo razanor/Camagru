@@ -15,15 +15,12 @@ class UsersController
         $message = '
         
        Thanks for signing up!
-       Your account has been created, you can login with the following credentials after you have activated your account by pressing the url below.
-        
-       ------------------------
-       Username: '.$name.'
-       ------------------------
-        
+       Your account has been created.
+       <br>
        Please click this link to activate your account:
-       http://www.yourwebsite.com/verify.php?email='.$email.'&hash='.$hash.'
-        
+       <br>
+       <a href="http://127.0.0.1:8080/email='.$email.'&hash='.$hash.'">Click here!</a>
+       
        '; // Our message above including the link
     
         // Set preferences for Subject field
@@ -42,7 +39,7 @@ class UsersController
         $header .= "Date: ".date("r (T)")." \r\n";
         $header .= iconv_mime_encode("Subject", $subject, $subject_preferences);
                           
-        mail($to, $subject, $message, $header); // Send our email
+        $a = mail($to, $subject, $message, $header); // Send our email
     }
 
    /**
@@ -92,7 +89,7 @@ class UsersController
                 self::mailSend($name, $email, $hash);
 
                 // here
-                die;
+                
                 $result = Users::register($name, $email, $password, $hash);
             }
         }
@@ -107,7 +104,6 @@ class UsersController
     public function actionLogin() {
         
         $name = '';
-
         if (isset($_POST['submit'])) {
             $name = $_POST['name'];
             $password = $_POST['password'];
