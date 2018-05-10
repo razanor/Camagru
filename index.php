@@ -13,4 +13,3 @@ session_start();
 
 $router = new Router();
 $router->start();
-
