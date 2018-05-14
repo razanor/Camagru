@@ -30,7 +30,7 @@
 	<form class="login-form" id="register-form" action="" method="post">
 	<p>Sign up</p>
 	<?php if ($mail === true): ?>
-		<p class="register">Confirmanition link has been sent to your email!</p><br>
+		<p class="register" style="color:blue;">Confirmanition link has been sent to your email!</p><br>
 	<?php else: ?>
 	<div class="error">
     	<?php if (!empty($errors)): ?>

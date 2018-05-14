@@ -26,8 +26,8 @@
 </div>
 
 <div class="main-login">
-	<form class="login-form" action="" method="post">
-		<p>Login</p>
+	<form class="login-form reset-form" action="" method="post">
+		<p>Reset password</p>
 		<div class="error">
 			<?php if (!empty($errors)): ?>
 			<ul>
@@ -37,12 +37,12 @@
 			</ul>
 				<?php endif; ?>
 			</div>
-		<input type="text" name="name" placeholder="Username"><br><br>
-  		<input type="password" name="password" placeholder="Password"><br><br>
-  		<input type="submit" name="submit" value="Login"><br><br>
-  		<a href="/reset/">Forget your password?</a><br><br>
+            <?php if ($check === true): ?>
+		<input type="text" name="email" placeholder="Your email"><br><br>
+  		<input type="submit" name="submit" value="Submit"><br><br>
   		<hr>
-  		<a href="/register/">Not yet a member?</a>
+        <?php endif; ?>
+        <!-- HERE -->
 	</form>	
 </div>
 

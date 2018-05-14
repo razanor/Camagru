@@ -199,8 +199,28 @@ class Users
       $result->bindParam(':activation', $activation, PDO::PARAM_STR);
 
       return $result->execute();
-      // here
       
+    }
 
+    /**
+     * Reset password
+     */
+    public static function getHash($email) {
+
+       $db = Db::getConnection();
+
+      $sql = "SELECT * FROM users WHERE email = :email";
+      $result = $db->prepare($sql);
+      $result->bindParam(':email', $email, PDO::PARAM_STR);
+      $result->setFetchMode(PDO::FETCH_ASSOC);
+      $result->execute();
+
+      $user = $result->fetch();
+      
+      if (isset($user['hash'])) {
+        return $user['hash'];
+      } else {
+        return false;
+      }
     }
  }

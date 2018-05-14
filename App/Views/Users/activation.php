@@ -29,6 +29,11 @@
 
 	<form class="login-form" id="register-form" action="" method="post">
 	<p>Sign up</p>
+    <div class="error">
+    <ul>
+    <li style="color:green;">Your account was activated!</li>
+    </ul>
+    </div>
 		<p><a href="/login/">Log in</a></p>
 	</form>	
 </div>

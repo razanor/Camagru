@@ -7,24 +7,12 @@ class UsersController
     /**
      * Mail sending
      */
-    private function mailSend($name, $email, $hash)
+    private function mailSend($message, $email, $subject)
     {
         $to = $email; // Send email to our user
         $encoding = "utf-8";
-        $subject = 'Signup | Verification'; // Give the email a subject
         $from_name = "Camagru";
         $from_mail = "nrepak@student.unit.ua";
-
-        $message = '
-        
-       Thanks for signing up!
-       Your account has been created.
-       <br>
-       Please click this link to activate your account:
-       <br>
-       <a href="http://127.0.0.1:8080/activation/'.$hash.'">Click here!</a>
-       
-       '; // Our message above including the link
     
         // Set preferences for Subject field
         $subject_preferences = array(
@@ -106,13 +94,66 @@ class UsersController
 
             if (empty($errors)) {
                 $hash = md5(rand(0,1000));
-                $mail = self::mailSend($name, $email, $hash);
+                $subject = 'Signup | Verification';
+                $message = '
+                
+               Thanks for signing up!
+               Your account has been created.
+               <br>
+               Please click this link to activate your account:
+               <br>
+               <a href="http://127.0.0.1:8080/activation/'.$hash.'">Click here!</a>
+               
+               ';
+                $mail = self::mailSend($message, $email, $subject);
                                 
                 $result = Users::register($name, $email, $password, $hash);
             }
         }
 
         require_once(ROOT.'/App/Views/Users/register.php');
+        return true;
+    }
+
+    /**
+     * Reset password
+     */
+    public function actionReset() {
+     
+        $email = '';
+        $result = false;
+
+        if (isset($_POST['submit'])) {
+            $email = $_POST['email'];
+
+            $errors = array();
+
+            if (!Users::checkEmailExists($email)) {
+                $errors[] = "This email isn't exist!";
+            }
+            if (empty($errors)) {
+                $result = true;
+                $hash = Users::getHash($email);
+                $subject = 'Reset password';
+                $message = '
+                
+                To reset password follow this link
+               <br>
+               <a href="http://127.0.0.1:8080/reset-password/'.$hash.'">Click here!</a>
+               
+               ';
+                $mail = self::mailSend($message, $email, $subject);   
+            }
+        }
+        require_once(ROOT. '/App/Views/Users/reset.php');
+        return true;
+    }
+
+    public function actionresetPassword($params) {
+
+        $check = Users::hash($params[0]);
+
+        require_once(ROOT. '/App/Views/Users/reset-password.php');
         return true;
     }
 

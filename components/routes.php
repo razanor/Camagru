@@ -8,4 +8,6 @@ return array(
     'user-page' => 'main/user',
     'add' => 'pictures/add',
     'activation/(.*)' => 'users/activation/$1',
+    'reset' => 'users/reset',
+    'reset-password/(.*)' => 'users/resetPassword/$1',
 );
