@@ -37,7 +37,7 @@ class Router
                 $actionName = 'action'.ucfirst(array_shift($arr));
 
                 $parameters = $arr;
-                        
+            
                 $controllerFile = ROOT . '/App/Controllers/' . $controllerName . '.php';
                 if (file_exists($controllerFile)) {
                     include_once($controllerFile);

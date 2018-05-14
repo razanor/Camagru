@@ -4,6 +4,9 @@ include_once ROOT . '/App/Models/Users.php';
 
 class UsersController
 {
+    /**
+     * Mail sending
+     */
     private function mailSend($name, $email, $hash)
     {
         $to = $email; // Send email to our user
@@ -19,7 +22,7 @@ class UsersController
        <br>
        Please click this link to activate your account:
        <br>
-       <a href="http://127.0.0.1:8080/email='.$email.'&hash='.$hash.'">Click here!</a>
+       <a href="http://127.0.0.1:8080/activation/'.$hash.'">Click here!</a>
        
        '; // Our message above including the link
     
@@ -40,7 +43,22 @@ class UsersController
         $header .= iconv_mime_encode("Subject", $subject, $subject_preferences);
                           
         $a = mail($to, $subject, $message, $header); // Send our email
+
+        if ($a === true) {
+            header("Location: /activation/");
+            // here
+        }
     }
+
+    /**
+     * User activation
+     */
+
+     public function actionActivation($param)
+     {
+        require_once(ROOT.'/App/Views/Users/activation.php');
+        return true;
+     }
 
    /**
     * Register

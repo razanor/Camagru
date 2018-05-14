@@ -7,4 +7,5 @@ return array(
     'logout' => 'users/logout',
     'user-page' => 'main/user',
     'add' => 'pictures/add',
+    'activation/(.*)' => 'users/activation/$1',
 );
