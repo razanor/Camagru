@@ -42,12 +42,8 @@ class UsersController
         $header .= "Date: ".date("r (T)")." \r\n";
         $header .= iconv_mime_encode("Subject", $subject, $subject_preferences);
                           
-        $a = mail($to, $subject, $message, $header); // Send our email
+        return mail($to, $subject, $message, $header); // Send our email
 
-        if ($a === true) {
-            header("Location: /activation/");
-            // here
-        }
     }
 
     /**
@@ -56,6 +52,11 @@ class UsersController
 
      public function actionActivation($param)
      {
+        $check = Users::hash($param[0]);
+
+        if ($check == true) {
+            Users::setToActive($param[0], 1);
+        }
         require_once(ROOT.'/App/Views/Users/activation.php');
         return true;
      }
@@ -68,6 +69,7 @@ class UsersController
         $name = '';
         $email = '';
         $result = false;
+        $mail = false;
 
         if (isset($_POST['submit'])) {
             $name = $_POST['name'];
@@ -104,10 +106,8 @@ class UsersController
 
             if (empty($errors)) {
                 $hash = md5(rand(0,1000));
-                self::mailSend($name, $email, $hash);
-
-                // here
-                
+                $mail = self::mailSend($name, $email, $hash);
+                                
                 $result = Users::register($name, $email, $password, $hash);
             }
         }
@@ -136,7 +136,7 @@ class UsersController
                 $errors[] = "The password should be more than 6 symbols";
             }
 
-            $userId = Users::check_user($name, hash('whirlpool', $password));
+            $userId = Users::check_user($name, hash('whirlpool', $password), 1);
 
             if ($userId == false) {
                 $errors[] = 'Wrong password or username';

@@ -84,15 +84,16 @@ class Users
      * Login
      */
 
-     public static function check_user($name, $password) {
+     public static function check_user($name, $password, $activation) {
 
       $db = Db::getConnection();
 
-      $sql = 'SELECT * FROM users WHERE username = :name AND password = :password';
+      $sql = 'SELECT * FROM users WHERE username = :name AND password = :password AND activation = :activation';
 
       $result = $db->prepare($sql);
       $result->bindParam(':name', $name, PDO::PARAM_STR);
       $result->bindParam(':password', $password, PDO::PARAM_STR);
+      $result->bindParam(':activation', $activation, PDO::PARAM_INT);
       $result->execute();
 
       $user = $result->fetch();
@@ -164,5 +165,42 @@ class Users
       } else {
         return false;
       }
+    }
+
+    /**
+     * Activation
+     */
+    public static function hash($hash) {
+
+       $db = Db::getConnection();
+
+      $sql = "SELECT * FROM users WHERE hash = :hash";
+      $result = $db->prepare($sql);
+      $result->bindParam(':hash', $hash, PDO::PARAM_INT);
+      $result->setFetchMode(PDO::FETCH_ASSOC);
+      $result->execute();
+
+      $user = $result->fetch();
+      
+      if (strcmp($user['hash'], $hash) == 0) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+
+    public static function setToActive($hash, $activation) {
+
+      $db = Db::getConnection();
+      
+      $sql = "UPDATE users SET activation = :activation WHERE hash = :hash";
+      $result = $db->prepare($sql);
+      $result->bindParam(':hash', $hash, PDO::PARAM_STR);
+      $result->bindParam(':activation', $activation, PDO::PARAM_STR);
+
+      return $result->execute();
+      // here
+      
+
     }
  }

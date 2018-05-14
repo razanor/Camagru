@@ -29,9 +29,8 @@
 
 	<form class="login-form" id="register-form" action="" method="post">
 	<p>Sign up</p>
-	<?php if ($result == true): ?>
-		<p class="register"> You are susscesfully register!</p><br>
-    	<p><a href="/login/">Log in</a></p>
+	<?php if ($mail === true): ?>
+		<p class="register">Confirmanition link has been sent to your email!</p><br>
 	<?php else: ?>
 	<div class="error">
     	<?php if (!empty($errors)): ?>
