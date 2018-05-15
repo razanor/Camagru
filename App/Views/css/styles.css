@@ -82,12 +82,15 @@ body {
     -ms-flex: 25%; 
     flex: 25%;
     max-width: 25%;
-    padding: 9px 9px;
+	padding: 20px 20px;
 }
 
 .column img {
-    margin-top: 8px;
-    vertical-align: middle;
+    margin-top: 20px;
+	vertical-align: middle;
+	border-radius: 7px;
+	box-shadow: 2px 2px 2px 2px black;
+	
 }
 
 @media screen and (max-width: 1500px) {
@@ -98,7 +101,7 @@ body {
     }
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 700px) {
     .column {
         -ms-flex: 100%;
         flex: 100%;
