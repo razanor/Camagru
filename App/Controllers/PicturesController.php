@@ -1,6 +1,8 @@
 <?php
 
 include_once ROOT . '/App/Models/Pictures.php';
+include_once ROOT . '/App/Models/Users.php';
+
 
 class PicturesController
 {
@@ -10,6 +12,8 @@ class PicturesController
 
      public function actionAdd() {
 
+        $userId = Users::checkLogged();
+        
         if (isset($_POST['submit'])) {
             $file = $_FILES['file'];
 
