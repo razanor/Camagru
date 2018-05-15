@@ -130,11 +130,12 @@ footer > p {
 .login-form {
 	width: 400px;
 	height: 480px;
-	border: 1px solid #FF9966;
+	border: 2px solid #FF9966;
 	padding-top: 20px;  
 	margin-top: 300px;
 	text-align: center;
-	background-color: #F0F0F0;
+	border-radius: 8px;
+	background-color: #e0eef7;
 }
 
 .login-form > input {

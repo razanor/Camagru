@@ -9,7 +9,7 @@
 
 </head>
 
-<body>
+<body >
 
 <!-- Top navigation -->
 <div class="topnav">

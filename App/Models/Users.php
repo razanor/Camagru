@@ -223,4 +223,19 @@ class Users
         return false;
       }
     }
+
+      public static function resetPassword($password, $hash) {
+
+      $db = Db::getConnection();
+      $password = hash("whirlpool", $password);
+
+      $sql = "UPDATE users SET password = :password WHERE hash = :hash";
+
+      $result = $db->prepare($sql);
+      $result->bindParam(':password', $password, PDO::PARAM_STR);
+      $result->bindParam(':hash', $hash, PDO::PARAM_STR);
+
+      return $result->execute();
+
+    }
  }

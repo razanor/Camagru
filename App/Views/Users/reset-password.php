@@ -37,12 +37,19 @@
 			</ul>
 				<?php endif; ?>
 			</div>
-            <?php if ($check === true): ?>
-		<input type="text" name="email" placeholder="Your email"><br><br>
+            <?php if ($reset === false): ?>
+		<input type="password" name="password" placeholder=" New password"><br><br>
+		<input type="password" name="password_repeat" placeholder="Repeat password"><br><br>
   		<input type="submit" name="submit" value="Submit"><br><br>
   		<hr>
-        <?php endif; ?>
-        <!-- HERE -->
+	<?php else: ?>
+	<div class="error">
+	<ul>
+    <li style="color:green;">Your password was reset successfully!</li>
+    </ul>
+	</div>
+	<p><a href="/login/">Log in</a></p>
+	<?php endif; ?>
 	</form>	
 </div>
 

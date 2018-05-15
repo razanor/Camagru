@@ -137,7 +137,7 @@ class UsersController
                 $subject = 'Reset password';
                 $message = '
                 
-                To reset password follow this link
+                To reset password follow this link:
                <br>
                <a href="http://127.0.0.1:8080/reset-password/'.$hash.'">Click here!</a>
                
@@ -152,10 +152,33 @@ class UsersController
     public function actionresetPassword($params) {
 
         $check = Users::hash($params[0]);
+        $reset = false;
+
+        if ($check === true) {
+            if (isset($_POST['submit'])) {
+                $password = $_POST['password'];
+                $password_repeat = $_POST['password_repeat'];
+
+                $errors = array();
+
+                if (!Users::checkPassword($password)) {
+                    $errors[] = "The password should be more than 6 symbols";
+                }
+
+                if (strcmp($password, $password_repeat) !== 0) {
+                    $errors[] = "Passwords don't match";
+                }
+
+                if (empty($errors)) {
+                    $reset = Users::resetPassword($password, $params[0]);
+                }
+    
+        }
 
         require_once(ROOT. '/App/Views/Users/reset-password.php');
         return true;
     }
+}
 
     /**
      * Login
