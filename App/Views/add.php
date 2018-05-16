@@ -32,7 +32,7 @@
 <input type="file" name="file"><br>
 <input type="submit" name="submit" value="Upload">
 </form>
-
+<a href="/take-photo/">Take photo</a>
 <footer>
 	<p>&#169 nrepak, 2018</p>
 </footer>

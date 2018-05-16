@@ -14,3 +14,7 @@
 	text-align: center;
 	text-decoration: none;
 }
+
+#canvas {
+	display: none;
+}

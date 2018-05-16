@@ -10,4 +10,5 @@ return array(
     'activation/(.*)' => 'users/activation/$1',
     'reset' => 'users/reset',
     'reset-password/(.*)' => 'users/resetPassword/$1',
+    'take-photo' => 'pictures/takePhoto',
 );
