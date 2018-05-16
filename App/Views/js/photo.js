@@ -23,6 +23,21 @@
 	document.getElementById('capture').addEventListener('click', function() {
 		context.drawImage(video, 0, 0, 400, 300);
 		photo.setAttribute('src', canvas.toDataURL('image/png'));
-
+		var x = document.getElementById('photo').getAttribute('src');
+		document.getElementById('demo').innerHTML = x;
+		ajax("data=" + x);
 	});
+
+	var ajax = function(data) {
+		var xhr = new XMLHttpRequest();
+		xhr.open('POST', '/take-photo/', true);
+		xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		xhr.onreadystatechange = function() {
+			if (xhr.readyState == 4 && xhr.status == 200) {
+				console.log(xhr.responseText);
+			} 
+		}
+		xhr.send(data); 
+	}
+
 }) ();

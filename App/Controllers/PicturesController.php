@@ -53,8 +53,8 @@ class PicturesController
     }
 
     public function actiontakePhoto() {
-
         $userId = Users::checkLogged();
+
         var_dump($_POST);
         require_once (ROOT. '/App/Views/take-photo.php');
         return true;

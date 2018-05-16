@@ -14,6 +14,7 @@
 		<img id="photo" src="">
 	</div>
 
-	<script src="http://127.0.0.1:8080/App/Views/js/photo.js" type="text/javascript"></script>
+	<p id="demo"></p>
+	<script src="http://127.0.0.1:8080/App/Views/js/photo.js"></script>
 </body>
 </html>
