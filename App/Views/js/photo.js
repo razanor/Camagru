@@ -24,17 +24,18 @@
 		context.drawImage(video, 0, 0, 400, 300);
 		photo.setAttribute('src', canvas.toDataURL('image/png'));
 		var x = document.getElementById('photo').getAttribute('src');
-		document.getElementById('demo').innerHTML = x;
 		ajax("data=" + x);
 	});
 
-	var ajax = function(data) {
+	function ajax(data) {
 		var xhr = new XMLHttpRequest();
-		xhr.open('POST', '/take-photo/', true);
+		xhr.open('POST', '/save-photo/', true);
 		xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		xhr.setRequestHeader("Content-lenght", data.lenght);
 		xhr.onreadystatechange = function() {
 			if (xhr.readyState == 4 && xhr.status == 200) {
 				console.log(xhr.responseText);
+				window.location.href = '/user-page/';
 			} 
 		}
 		xhr.send(data); 

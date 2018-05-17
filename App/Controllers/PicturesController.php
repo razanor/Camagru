@@ -33,8 +33,9 @@ class PicturesController
                     if ($fileSize < 500000) {
                         $fileNameNew = uniqid('', true).".".$fileActualExt;
                         $fileDestination = ROOT. '/uploads/' .$fileNameNew;
-                        move_uploaded_file($fileTmpName, $fileDestination);
+                        move_uploaded_file($fileTmpName, $fileDestination);                   
                         $fileDestination = substr(strrchr($fileDestination, "/"), 1);
+
                         $fileDestination = $_SERVER['HTTP_ORIGIN'] . '/uploads/' .$fileNameNew;
                         $result = Pictures::addPhoto($fileDestination);
                         header ("Location: /user-page/");
@@ -52,10 +53,29 @@ class PicturesController
         require_once (ROOT. '/App/Views/add.php');
     }
 
+    public function actionsavePhoto() {
+        $userId = Users::checkLogged();
+
+        if (isset($_POST['data'])) {
+            // convert from base64 to img
+            $img = $_POST['data'];
+            $img = str_replace('data:image/png;base64,', '', $img);
+            $img = str_replace(' ', '+', $img);
+            $data = base64_decode($img);
+            $file = ROOT . '/uploads/' . uniqid() . '.jpeg';
+            $success = file_put_contents($file, $data);
+
+            // add path to database
+            $file = substr(strrchr($file, "/"), 1);
+            $fileDestination = $_SERVER['HTTP_ORIGIN'] . '/uploads/' .$file;
+            $result = Pictures::addPhoto($fileDestination);
+        }
+        return true;
+    }
+
     public function actiontakePhoto() {
         $userId = Users::checkLogged();
 
-        var_dump($_POST);
         require_once (ROOT. '/App/Views/take-photo.php');
         return true;
     }
