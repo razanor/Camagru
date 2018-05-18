@@ -234,12 +234,54 @@ footer > p {
 	height: 350px;
 }
 
+/*add-photo*/
 
+.main-photo {
+	width: 100%;
+	height: 1137px;
+	display: flex;
+	justify-content: center;	
+}
 
+.action-photo {
+	width: 600px;
+	height: 480px;
+	border: 2px solid #FF9966;
+	padding-top: 20px;  
+	margin-top: 300px;
+	border-radius: 8px;
+	background-color: #e0eef7;
+	text-align: center;
+	padding-top: 180px;
+}
 
+.action-photo > form {
+	width: 100%;
+	height: 100px;
+	position: relative;
+}
 
+.action-photo > form > input[type=submit] {
+	border: 2px solid transparent;
+	background: #3498DB;
+	color: white;
+	font-size: 16px;
+	line-height: 25px;
+	width: 150px;
+	padding: 5px 0;
+	border-radius: 3px;
+	position: absolute;
+	left: 40%;
+}
 
+.action-photo > form > input[type=file]{
+	position: absolute;
+	left: 39%;
+}
 
-
+.action-photo > a {
+	position: absolute;
+	left: 48%;
+}
 
 

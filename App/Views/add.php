@@ -28,11 +28,15 @@
 	</div>
 
 </div>
+<div class="main-photo">
+<div class="action-photo">
 <form action="" method="post" enctype="multipart/form-data">
-<input type="file" name="file"><br>
+<input type="file" name="file"><br><br>
 <input type="submit" name="submit" value="Upload">
 </form>
-<a href="/take-photo/">Take photo</a>
+<a href="/take-photo/"><img src="http://127.0.0.1:8080/App/Views/img/webcam.png" title="Use webcam" alt="Take photo" width="100" height="100"></a>
+</div>
+</div>
 <footer>
 	<p>&#169 nrepak, 2018</p>
 </footer>

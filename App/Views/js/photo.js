@@ -23,11 +23,13 @@
 	document.getElementById('capture').addEventListener('click', function() {
 		context.drawImage(video, 0, 0, 400, 300);
 		photo.setAttribute('src', canvas.toDataURL('image/png'));
-		var x = document.getElementById('photo').getAttribute('src');
-		ajax("data=" + x);
+		document.getElementById("post").style.display="block";
 	});
 
-	function ajax(data) {
+}) ();
+
+	function ajax() {
+		var data = "data=" + document.getElementById('photo').getAttribute('src');
 		var xhr = new XMLHttpRequest();
 		xhr.open('POST', '/save-photo/', true);
 		xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -41,4 +43,3 @@
 		xhr.send(data); 
 	}
 
-}) ();
