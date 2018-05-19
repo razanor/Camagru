@@ -37,7 +37,7 @@ class PicturesController
                         $fileDestination = substr(strrchr($fileDestination, "/"), 1);
 
                         $fileDestination = $_SERVER['HTTP_ORIGIN'] . '/uploads/' .$fileNameNew;
-                        $result = Pictures::addPhoto($fileDestination);
+                        $result = Pictures::addPhoto($fileDestination, $userId);
                         header ("Location: /user-page/");
                     } else {
                         echo "Your file is too big!";
@@ -68,7 +68,7 @@ class PicturesController
             // add path to database
             $file = substr(strrchr($file, "/"), 1);
             $fileDestination = $_SERVER['HTTP_ORIGIN'] . '/uploads/' .$file;
-            $result = Pictures::addPhoto($fileDestination);
+            $result = Pictures::addPhoto($fileDestination, $userId);
         }
         return true;
     }

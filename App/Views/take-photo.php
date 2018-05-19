@@ -14,7 +14,6 @@
 		<img id="photo" src="">
 		<a href="#" id="post" class="booth-capture-button" onclick="ajax()" style="display:none;">Post</a>
 	</div>
-
 	<script src="http://127.0.0.1:8080/App/Views/js/photo.js"></script>
 </body>
 </html>
