@@ -28,14 +28,29 @@
 <div class="row">
 <?php foreach($pictures as $picture): ?> 
 		<div class="column">
-	<img class="img" src="<?php echo $picture['path']; ?>" style="width:100%">
+	<a data-id="<?php echo $picture['id']; ?>" href="#" onclick="popup()"><img class="img" src="<?php echo $picture['path']; ?>" style="width:100%"></a>
 	</div>
 <?php endforeach; ?>
 </div>
+<div class="popup" id="popup">
+<div class="popup-container">
+</div>
+</div>
+
 
 <footer>
 	<p>&#169 nrepak, 2018</p>
 </footer>
-
+<script>
+function popup() {
+document.getElementById('popup').style.display="flex";
+}
+a = document.getElementsByTagName('a')[2];
+a.addEventListener("click", function(e) {
+    e.preventDefault();
+    console.log(e.target);
+	console.log(e.target.parentElement.dataset.id);
+});
+</script>
 </body>
 </html>

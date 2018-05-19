@@ -79,4 +79,5 @@ class PicturesController
         require_once (ROOT. '/App/Views/take-photo.php');
         return true;
     }
+
 }
