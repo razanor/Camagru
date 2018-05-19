@@ -30,6 +30,15 @@
 </div>
 <div class="main-photo">
 <div class="action-photo">
+<div class="upload-error">
+<?php if (!empty($errors)): ?>
+			<ul>
+				<?php foreach ($errors as $error): ?>
+					<li><?php echo $error; ?></li>
+					<?php endforeach; ?>
+			</ul>
+				<?php endif; ?>
+</div>
 <form action="" method="post" enctype="multipart/form-data">
 <input type="file" name="file"><br><br>
 <input type="submit" name="submit" value="Upload">

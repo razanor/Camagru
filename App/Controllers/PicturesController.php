@@ -16,6 +16,7 @@ class PicturesController
         
         if (isset($_POST['submit'])) {
             $file = $_FILES['file'];
+            $errors = array();
 
             $fileName = $_FILES['file']['name'];
             $fileTmpName = $_FILES['file']['tmp_name'];
@@ -40,13 +41,13 @@ class PicturesController
                         $result = Pictures::addPhoto($fileDestination, $userId);
                         header ("Location: /user-page/");
                     } else {
-                        echo "Your file is too big!";
+                        $errors[] = "Your file is too big!";
                     }
                 } else {
-                    echo "There was an error uploading your file";
+                    $errors[] = "There was an error uploading your file";
                 }
             } else {
-                echo "You cannot upload files of this type!";
+                $errors[] = "You cannot upload files of this type!";
             }
 
         }
