@@ -9,7 +9,7 @@
 
 </head>
 
-<body >
+<body>
 
 <!-- Top navigation -->
 <div class="topnav">
@@ -21,16 +21,26 @@
 
 <!-- Right-aligned links -->
 <div class="topnav-right">
-	<a class="log" href="/login/">Log in</a>
+    <a class="log" href="/login/">Log in</a>
+    <a class="logout" href="/">Back</a>
+</div>
+</div>
+<div class="main-posts">
+<div class="post-details">
+<div class="login-name">
+<p><?php echo $user['username']; ?></p>
+<span><?php echo $picture['creation'] ?></span>
+</div>
+<img class="img" src="<?php echo $picture['path']; ?>" style="width:90%">
+<div class="img-like">
+<img src="http://127.0.0.1:8080/App/Views/img/like.png" alt="like" width="50" height="50">
+</div>
+<div class="like-quantities">
+    <p>33 likes</p>
+</div>
 </div>
 </div>
 
-<div class="row">
-<?php foreach($pictures as $picture): ?> 
-		<div class="column">
-	<a href="post/<?php echo $picture['id'] ?>"><img class="img" src="<?php echo $picture['path']; ?>" style="width:100%"></a>
-	</div>
-<?php endforeach; ?>
 <footer>
 	<p>&#169 nrepak, 2018</p>
 </footer>

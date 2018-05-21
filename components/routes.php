@@ -12,4 +12,5 @@ return array(
     'reset-password/(.*)' => 'users/resetPassword/$1',
     'take-photo' => 'pictures/takePhoto',
     'save-photo' => 'pictures/savePhoto',
+    'post/([0-9]+)' => 'pictures/post/$1',
 );

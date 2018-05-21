@@ -81,4 +81,18 @@ class PicturesController
         return true;
     }
 
+    /**
+     * Posts
+     */
+
+     public function actionPost($params) {
+
+
+        $picture = Pictures::getPhotoById($params[0]);
+        $user = Users::getUserNameById($picture['userId']);
+
+        require_once (ROOT. '/App/Views/posts.php');
+        return true;
+     }
+
 }

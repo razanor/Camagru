@@ -34,4 +34,19 @@ class Pictures
 
         return $result->fetchAll();
     }
+
+    public static function getPhotoById($id) {
+        
+        $db = Db::getConnection();
+
+        $sql = "SELECT * FROM images WHERE id = :id";
+        $result = $db->prepare($sql);
+        $result->bindParam(':id', $id, PDO::PARAM_INT);
+
+        $result->setFetchMode(PDO::FETCH_ASSOC);
+        $result->execute();
+
+        return $result->fetch();
+
+    }
 }
