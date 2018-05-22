@@ -39,6 +39,12 @@
 <div class="like-quantities">
 	<p><span id="likes-number"><?php echo $picture['likes'] ?></span> likes</p>
 </div>
+<div class="comments-box">
+	<textarea id="comment-box"></textarea>
+	<br>
+	<button id="submit-comment" type="button">Comment</buttom>
+
+</div>
 </div>
 </div>
 

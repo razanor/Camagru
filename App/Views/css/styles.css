@@ -380,3 +380,10 @@ footer > p {
 #dislike-button {
 	display: none;
 }
+
+.comments-box {
+	position: absolute;
+	text-align: center;
+	top: 560px;
+	margin-left: 200px;
+}
