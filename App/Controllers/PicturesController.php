@@ -23,7 +23,6 @@ class PicturesController
             $fileSize = $_FILES['file']['size'];
             $fileError = $_FILES['file']['error'];
             $fileType = $_FILES['file']['type'];
-
             $fileExt = explode('.', $fileName);
             $fileActualExt = strtolower(end($fileExt));
 
@@ -94,5 +93,32 @@ class PicturesController
         require_once (ROOT. '/App/Views/posts.php');
         return true;
      }
+
+     public function actionPostRegisterUser($params) {
+
+        $userId = Users::checkLogged();
+        $picture = Pictures::getPhotoById($params[0]);
+        $user = Users::getUserNameById($picture['userId']);
+
+
+        require_once (ROOT. '/App/Views/Users/posts-register.php');
+
+        return true;
+     }
+
+     /**
+      * Posts like and comments
+      */
+    
+    public function actionLikePost() {
+
+        if (isset($_POST['data'])) {
+            $result = Pictures::addLike($_POST['data']);
+        }
+        if (isset($_POST['data1'])) {
+            $result = Pictures::removeLike($_POST['data1']);
+        }
+        return true;
+    }
 
 }

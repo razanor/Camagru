@@ -26,7 +26,7 @@ class Pictures
 
         $db = Db::getConnection();
 
-        $sql = "SELECT * FROM images";
+        $sql = "SELECT * FROM images ORDER BY creation desc";
         $result = $db->prepare($sql);
 
         $result->setFetchMode(PDO::FETCH_ASSOC);
@@ -49,4 +49,30 @@ class Pictures
         return $result->fetch();
 
     }
+
+    /**
+     * Likes and comments
+     */
+
+     public static function addLike($id) {
+      $db = Db::getConnection();
+
+      $sql = "UPDATE images SET likes = likes + 1 WHERE id = :id";
+
+      $result = $db->prepare($sql);
+      $result->bindParam(':id', $id, PDO::PARAM_INT);
+
+      return $result->execute();
+    }
+
+    public static function removeLike($id) {
+        $db = Db::getConnection();
+  
+        $sql = "UPDATE images SET likes = likes - 1 WHERE id = :id";
+  
+        $result = $db->prepare($sql);
+        $result->bindParam(':id', $id, PDO::PARAM_INT);
+  
+        return $result->execute();
+      }
 }

@@ -335,7 +335,7 @@ footer > p {
 	border: 1px solid #FF9966;
 	border-radius: 8px;
 	width: 600px;
-	height: 700px;
+	height: 70%;;
 	margin: 20px;
 	padding-top: 5px;
 	position: relative;
@@ -368,5 +368,15 @@ footer > p {
 	margin-left: 20px;
 }
 
+.img-like > button {
+	border: none;
+	padding: 0;
+}
 
+.img-like > button:focus {
+	outline: none;
+}
 
+#dislike-button {
+	display: none;
+}

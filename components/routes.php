@@ -1,5 +1,11 @@
 <?php
 return array(
+     /**
+     * Ajax routes
+     */
+    'save-photo' => 'pictures/savePhoto',
+    'like-post' => 'pictures/likePost',
+
     '' => 'main/view',
     'login' => 'users/login',
     'register' => 'users/register',
@@ -11,6 +17,6 @@ return array(
     'reset' => 'users/reset',
     'reset-password/(.*)' => 'users/resetPassword/$1',
     'take-photo' => 'pictures/takePhoto',
-    'save-photo' => 'pictures/savePhoto',
     'post/([0-9]+)' => 'pictures/post/$1',
+    'user-page/post/([0-9]+)' => 'pictures/postRegisterUser/$1',
 );

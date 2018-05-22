@@ -36,7 +36,7 @@
 <img src="http://127.0.0.1:8080/App/Views/img/like.png" alt="like" width="50" height="50">
 </div>
 <div class="like-quantities">
-    <p>33 likes</p>
+<p><?php echo $picture['likes'] ?> likes</p>
 </div>
 </div>
 </div>
