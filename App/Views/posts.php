@@ -33,10 +33,17 @@
 </div>
 <img class="img" src="<?php echo $picture['path']; ?>" style="width:90%">
 <div class="img-like">
-<img src="http://127.0.0.1:8080/App/Views/img/like.png" alt="like" width="50" height="50">
+<img src="http://127.0.0.1:8080/App/Views/img/dislike.png" alt="like" width="50" height="50">
 </div>
 <div class="like-quantities">
 <p><?php echo $picture['likes'] ?> likes</p>
+</div>
+<div class="comments-box">
+<div id="comments">
+	<?php foreach ($comments as $comment): ?>
+	<p id="user"><b><?php echo $comment['username'] ?> - </b><?php echo $comment['comment'] ?></p>
+	<?php endforeach; ?>
+	</div>
 </div>
 </div>
 </div>

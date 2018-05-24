@@ -5,7 +5,8 @@ return array(
      */
     'save-photo' => 'pictures/savePhoto',
     'like-post' => 'pictures/likePost',
-
+    'add-comment' => 'pictures/addComment',
+ 
     '' => 'main/view',
     'login' => 'users/login',
     'register' => 'users/register',

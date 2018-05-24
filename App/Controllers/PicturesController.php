@@ -89,6 +89,8 @@ class PicturesController
 
         $picture = Pictures::getPhotoById($params[0]);
         $user = Users::getUserNameById($picture['userId']);
+        $comments = Pictures::getCommentsById($params[0]);
+        
 
         require_once (ROOT. '/App/Views/posts.php');
         return true;
@@ -99,7 +101,8 @@ class PicturesController
         $userId = Users::checkLogged();
         $picture = Pictures::getPhotoById($params[0]);
         $user = Users::getUserNameById($picture['userId']);
-
+        $comments = Pictures::getCommentsById($params[0]);
+        $userName = $user['username'];
 
         require_once (ROOT. '/App/Views/Users/posts-register.php');
 
@@ -118,6 +121,22 @@ class PicturesController
         if (isset($_POST['data1'])) {
             $result = Pictures::removeLike($_POST['data1']);
         }
+        return true;
+    }
+
+    public function actionaddComment() {
+
+        var_dump($_POST);
+        $userId = Users::checkLogged();
+        $user = Users::getUsernameById($userId);
+        
+
+        $username = $user['username'];
+
+        if (isset($_POST['action'])) {
+            $result = Pictures::addComment($_POST['img-id'], $userId, $_POST['body'], $username);
+        }
+
         return true;
     }
 

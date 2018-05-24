@@ -42,8 +42,13 @@
 <div class="comments-box">
 	<textarea id="comment-box"></textarea>
 	<br>
-	<button id="submit-comment" type="button">Comment</buttom>
-
+	<button id="submit-comment" type="button">Comment</button>
+	<div id="comments" data-parent="<?php echo $userName ?>">
+	<?php foreach ($comments as $comment): ?>
+	<p id="user"><b><?php echo $comment['username'] ?> - </b><?php echo $comment['comment'] ?></p>
+	<?php endforeach; ?>
+	</div>
+	
 </div>
 </div>
 </div>
@@ -51,44 +56,6 @@
 <footer>
 	<p>&#169 nrepak, 2018</p>
 </footer>
-<script>
-function ajaxLike() {
-	document.getElementById("like-button").style.display="none";
-	document.getElementById("dislike-button").style.display="inline";
-    var el = document.getElementById("id-img");
-    var id = "data=" + el.dataset.id;
-    var xhr = new XMLHttpRequest();
-		xhr.open('POST', '/like-post/', true);
-		xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-		xhr.setRequestHeader("Content-lenght", id.lenght);
-		xhr.onreadystatechange = function() {
-			if (xhr.readyState == 4 && xhr.status == 200) {1
-				console.log(xhr.responseText);
-				 let likes = document.getElementById('likes-number');
-				 likes.innerHTML = parseInt(likes.innerHTML) + 1;
-			} 
-		}
-		xhr.send(id); 
-}
-
-function ajaxDislike() {
-	document.getElementById("like-button").style.display="inline";
-	document.getElementById("dislike-button").style.display="none";
-    var el = document.getElementById("id-img");
-    var id = "data1=" + el.dataset.id;
-    var xhr = new XMLHttpRequest();
-		xhr.open('POST', '/like-post/', true);
-		xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-		xhr.setRequestHeader("Content-lenght", id.lenght);
-		xhr.onreadystatechange = function() {
-			if (xhr.readyState == 4 && xhr.status == 200) {1
-				console.log(xhr.responseText);
-				 let likes = document.getElementById('likes-number');
-				 likes.innerHTML = parseInt(likes.innerHTML) - 1;
-			} 
-		}
-		xhr.send(id); 
-}
-</script>
+<script src="http://127.0.0.1:8080/App/Views/js/like-comments.js"></script>
 </body>
 </html>
