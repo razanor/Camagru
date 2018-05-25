@@ -43,7 +43,7 @@
 		<input type="text" name="email" placeholder="Your email"><br><br>
   		<input type="submit" name="submit" value="Submit"><br><br>
   		<hr>
-  		<a href="/login/">Log in</a>
+  		<a href="/login/">Back</a>
     <?php endif; ?>
 	</form>	
 </div>

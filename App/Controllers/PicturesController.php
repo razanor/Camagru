@@ -116,6 +116,8 @@ class PicturesController extends UsersController
     
     public function actionLikePost() {
 
+        $userId = Users::checkLogged();
+        
         if (isset($_POST['data'])) {
             $result = Pictures::addLike($_POST['data']);
         }
