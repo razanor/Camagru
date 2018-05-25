@@ -56,7 +56,13 @@
   		<input type="password" name="new_password" placeholder="New password"><br><br>
   		<input type="submit" name="submit_password"><br>
 		<p>Notification</p>
-		<input type="button" value="On" id="onoff" onclick="notification()"> 
+		<?php
+			$value = ($notification == 1) 
+			? 'On'
+			: 'Off'
+		;
+		?>
+		<input type="button" value="<?php echo $value ?>" id="onoff" onclick="notification()" title="Change notification">
 	</form>	
 </div>
 
@@ -74,12 +80,12 @@ function notification() {
 
   if (currentValue == "Off") {
 	document.getElementById("onoff").value="On";
-	data += "&" + "notification=off";
+	data += "&" + "notification=on";
 	
   } else {
 
     document.getElementById("onoff").value="Off";
-	data += "&" + "notification=on";
+	data += "&" + "notification=off";
   }
   let xhr = new XMLHttpRequest();
 

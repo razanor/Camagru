@@ -237,6 +237,7 @@ class UsersController
         $name = $user['username'];
         $email = $user['email'];
         $password = $user['password'];
+        $notification = $user['notification'];
 
         $errors = array();
         $flag = 0;
