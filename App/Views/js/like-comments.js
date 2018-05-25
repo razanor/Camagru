@@ -40,8 +40,7 @@ let commentBox = document.getElementById('comment-box'),
 	button = document.getElementById('submit-comment');
     comments = document.getElementById('comments');
     let elem = document.getElementById('comments');
-    var user = elem.dataset.parent;
-    console.log(user); 
+    var user = elem.dataset.parent; 
 	
 	button.addEventListener('click', function() {
 

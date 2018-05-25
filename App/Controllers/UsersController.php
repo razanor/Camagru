@@ -7,7 +7,7 @@ class UsersController
     /**
      * Mail sending
      */
-    private function mailSend($message, $email, $subject)
+    protected function mailSend($message, $email, $subject)
     {
         $to = $email; // Send email to our user
         $encoding = "utf-8";
@@ -285,5 +285,19 @@ class UsersController
         require_once (ROOT. '/App/Views/Users/edit.php');
         return true;
 
+    }
+
+    public function actionNotification() {
+
+        $userId = $_POST['id'];
+        $notification = $_POST['notification'];
+
+        if ($notification === "off") {
+            $return = Users::setNotification($userId, 0);
+        } else {
+            $return = Users::setNotification($userId, 1);
+        }
+        var_dump($return);
+        return true;
     }
 }

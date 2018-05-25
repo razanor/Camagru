@@ -238,4 +238,21 @@ class Users
       return $result->execute();
 
     }
+    /**
+     * Notification
+     */
+    public static function setNotification($userId, $flag) {
+
+      $db = Db::getConnection();
+
+      $sql = "UPDATE users SET notification = :flag WHERE id = :userId";
+
+      $result = $db->prepare($sql);
+      $result->bindParam(':userId', $userId, PDO::PARAM_INT);
+      $result->bindParam(':flag', $flag, PDO::PARAM_INT);
+
+      return $result->execute();
+
+    }
  }
+

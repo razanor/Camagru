@@ -2,9 +2,10 @@
 
 include_once ROOT . '/App/Models/Pictures.php';
 include_once ROOT . '/App/Models/Users.php';
+include_once ROOT . '/App/Controllers/UsersController.php';
 
 
-class PicturesController
+class PicturesController extends UsersController
 {
     /**
      * Add 
@@ -126,15 +127,28 @@ class PicturesController
 
     public function actionaddComment() {
 
-        var_dump($_POST);
         $userId = Users::checkLogged();
         $user = Users::getUsernameById($userId);
         
 
         $username = $user['username'];
+        $email = $user['email'];
+        $notification = $user['notification'];
+
 
         if (isset($_POST['action'])) {
             $result = Pictures::addComment($_POST['img-id'], $userId, $_POST['body'], $username);
+            if ($result === true && $notification == 1) {
+
+                $subject = 'New comment';
+                $message = '
+                
+                Somebody likes your post. Please check it.
+               
+               ';
+                $mail = UsersController::mailSend($message, $email, $subject);
+            }
+            
         }
 
         return true;

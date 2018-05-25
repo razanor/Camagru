@@ -190,10 +190,20 @@ footer > p {
 }
 
 .form-edit {
-	height: 680px;
+	height: 830px;
 }
 
 .form-edit > input[type=submit] {
+	border: 2px solid transparent;
+	background: #3498DB;
+	color: white;
+	font-size: 16px;
+	line-height: 25px;
+	padding: 4px 0;
+	border-radius: 3px;
+}
+
+.form-edit > input[type=button] {
 	border: 2px solid transparent;
 	background: #3498DB;
 	color: white;
@@ -300,29 +310,7 @@ footer > p {
 	left: 48%;
 }
 
-/*popup*/
-
-.popup {
-	display: none;
-	position: fixed;
-    align-items: center;
-    justify-content: center;
-    z-index: 6;
-    background: rgba(0, 0, 0, 0.4);
-    width: 100%;
-    height: 100%;
-    top: 0;
-	left: 0;
-}
-
-.popup-container {
-	background: #fff;
-    border-radius: 10px;
-    padding: 5px;
-    position: relative;
-	width: 700px;
-	height: 500px;
-}
+/*post*/
 
 .main-posts {
 	width: 100%;

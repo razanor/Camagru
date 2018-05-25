@@ -102,8 +102,8 @@ class Pictures
         $result = $db->prepare($sql);
         $result->bindParam(':username', $username, PDO::PARAM_STR);
         $result->bindParam(':comment', $comment, PDO::PARAM_STR);
-        $result->bindParam(':userId', $userId, PDO::PARAM_STR);
-        $result->bindParam(':imgId', $imgId, PDO::PARAM_STR);
+        $result->bindParam(':userId', $userId, PDO::PARAM_INT);
+        $result->bindParam(':imgId', $imgId, PDO::PARAM_INT);
   
         return $result->execute();
                 

@@ -31,7 +31,7 @@
 
 <div class="main-login">
 <h3>Hello, <?php echo $user['username'];?>!</h3>
-	<form class="login-form form-edit" action="" method="post">
+	<form data-id="<?php echo $userId ?>" class="login-form form-edit" action="" method="post">
 		<div class="update">
 		<?php if ($result == true): ?>
 		  <p>Update successfully</p>
@@ -54,13 +54,46 @@
 		<p>Change password</p>
   		<input type="password" name="old_password" placeholder="Old password"><br><br>
   		<input type="password" name="new_password" placeholder="New password"><br><br>
-  		<input type="submit" name="submit_password"><br><br>
+  		<input type="submit" name="submit_password"><br>
+		<p>Notification</p>
+		<input type="button" value="On" id="onoff" onclick="notification()"> 
 	</form>	
 </div>
 
 <footer>
 	<p>&#169 nrepak, 2018</p>
 </footer>
+<script>
+function notification() {
 
+  currentValue = document.getElementById('onoff').value;
+  var el = document.getElementsByClassName('login-form')[0];
+  var id = el.dataset.id;
+
+  var data = "id=" + id;
+
+  if (currentValue == "Off") {
+	document.getElementById("onoff").value="On";
+	data += "&" + "notification=off";
+	
+  } else {
+
+    document.getElementById("onoff").value="Off";
+	data += "&" + "notification=on";
+  }
+  let xhr = new XMLHttpRequest();
+
+	xhr.open('POST', '/notification/', true);
+	xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	xhr.setRequestHeader("Content-lenght", data.lenght);
+	xhr.onreadystatechange = function() {
+			if (xhr.readyState == 4 && xhr.status == 200) {
+				console.log(xhr.responseText); 
+			}
+		}
+	
+	xhr.send(data);
+}
+</script>
 </body>
 </html>

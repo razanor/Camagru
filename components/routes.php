@@ -6,6 +6,7 @@ return array(
     'save-photo' => 'pictures/savePhoto',
     'like-post' => 'pictures/likePost',
     'add-comment' => 'pictures/addComment',
+    'notification' => 'users/notification',
  
     '' => 'main/view',
     'login' => 'users/login',
