@@ -365,10 +365,6 @@ footer > p {
 	outline: none;
 }
 
-#dislike-button {
-	display: none;
-}
-
 .comments-box {
 	position: absolute;
 	text-align: center;

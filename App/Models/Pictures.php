@@ -108,4 +108,48 @@ class Pictures
         return $result->execute();
                 
     }
+
+    public static function addUniqueLike($imgId, $userId) {
+
+        $db = Db::getConnection();
+
+        $sql = 'INSERT INTO likes (userId, imgId) '
+        . 'VALUES (:userId, :imgId)';
+
+        $result = $db->prepare($sql);
+        $result->bindParam(':userId', $userId, PDO::PARAM_INT);
+        $result->bindParam(':imgId', $imgId, PDO::PARAM_INT);
+
+        return $result->execute();
+    }
+
+    public static function removeUniqueLike($imgId, $userId) {
+        
+        $db = Db::getConnection();
+
+        $sql = "DELETE FROM likes WHERE userId = :userId AND imgId = :imgId";
+
+        $result = $db->prepare($sql);
+        $result->bindParam(':userId', $userId, PDO::PARAM_INT);
+        $result->bindParam(':imgId', $imgId, PDO::PARAM_INT);
+
+        return $result->execute();
+    }
+
+    public static function getUniqueLike($userId, $imgId) {
+
+        $db = Db::getConnection();
+    
+        $sql = 'SELECT COUNT(*) FROM likes WHERE userId = :userId AND imgId = :imgId';
+        
+        $result = $db->prepare($sql);
+        $result->bindParam(':userId', $userId, PDO::PARAM_INT);
+        $result->bindParam(':imgId', $imgId, PDO::PARAM_INT);
+        $result->execute();
+        if ($result->fetchColumn()) {
+        return true;
+        } else {
+        return false;
+        }   
+    }
 }

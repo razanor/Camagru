@@ -13,7 +13,7 @@
 		video: true,
 		audio: false
 	}, function(stream) {
-		video.src = vendorUrl.createObjectURL(stream);
+		video.srcObject = stream;
 		video.play();
 	}, function(error) {
 		// an error occured

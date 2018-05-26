@@ -37,7 +37,7 @@ class PicturesController extends UsersController
                         move_uploaded_file($fileTmpName, $fileDestination);                   
                         $fileDestination = substr(strrchr($fileDestination, "/"), 1);
 
-                        $fileDestination = $_SERVER['HTTP_ORIGIN'] . '/uploads/' .$fileNameNew;
+                        $fileDestination = '/uploads/' .$fileNameNew;
                         $result = Pictures::addPhoto($fileDestination, $userId);
                         header ("Location: /user-page/");
                     } else {
@@ -68,7 +68,7 @@ class PicturesController extends UsersController
 
             // add path to database
             $file = substr(strrchr($file, "/"), 1);
-            $fileDestination = $_SERVER['HTTP_ORIGIN'] . '/uploads/' .$file;
+            $fileDestination = '/uploads/' .$file;
             $result = Pictures::addPhoto($fileDestination, $userId);
         }
         return true;
@@ -103,6 +103,7 @@ class PicturesController extends UsersController
         $picture = Pictures::getPhotoById($params[0]);
         $user = Users::getUserNameById($picture['userId']);
         $comments = Pictures::getCommentsById($params[0]);
+        $likesFlag = Pictures::getUniqueLike($userId, $params[0]);
         $userName = $user['username'];
 
         require_once (ROOT. '/App/Views/Users/posts-register.php');
@@ -120,9 +121,11 @@ class PicturesController extends UsersController
         
         if (isset($_POST['data'])) {
             $result = Pictures::addLike($_POST['data']);
+            Pictures::addUniqueLike($_POST['data'], $userId);
         }
         if (isset($_POST['data1'])) {
             $result = Pictures::removeLike($_POST['data1']);
+            Pictures::removeUniqueLike($_POST['data1'], $userId);
         }
         return true;
     }
@@ -152,7 +155,6 @@ class PicturesController extends UsersController
             }
             
         }
-
         return true;
     }
 

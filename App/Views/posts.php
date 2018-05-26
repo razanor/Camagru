@@ -4,7 +4,7 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="http://127.0.0.1:8080/App/Views/css/styles.css" rel="stylesheet" type="text/css">
+<link href="/App/Views/css/styles.css" rel="stylesheet" type="text/css">
 <title>Camagru</title>
 
 </head>
@@ -33,7 +33,7 @@
 </div>
 <img class="img" src="<?php echo $picture['path']; ?>" style="width:90%">
 <div class="img-like">
-<img src="http://127.0.0.1:8080/App/Views/img/like.png" alt="likes" width="50" height="50">
+<img src="/App/Views/img/like.png" alt="likes" width="50" height="50">
 </div>
 <div class="like-quantities">
 <p><?php echo $picture['likes'] ?> likes</p>

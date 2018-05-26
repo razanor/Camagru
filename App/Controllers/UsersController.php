@@ -298,7 +298,6 @@ class UsersController
         } else {
             $return = Users::setNotification($userId, 1);
         }
-        var_dump($return);
         return true;
     }
 }

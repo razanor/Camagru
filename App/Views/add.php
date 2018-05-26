@@ -4,7 +4,7 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="http://127.0.0.1:8080/App/Views/css/styles.css" rel="stylesheet" type="text/css">
+<link href="/App/Views/css/styles.css" rel="stylesheet" type="text/css">
 <title>Add photo</title>
 
 </head>
@@ -43,7 +43,7 @@
 <input type="file" name="file"><br><br>
 <input type="submit" name="submit" value="Upload">
 </form>
-<a href="/take-photo/"><img src="http://127.0.0.1:8080/App/Views/img/webcam.png" title="Use webcam" alt="Take photo" width="100" height="100"></a>
+<a href="/take-photo/"><img src="/App/Views/img/webcam.png" title="Use webcam" alt="Take photo" width="100" height="100"></a>
 </div>
 </div>
 <footer>

@@ -1,6 +1,7 @@
 function ajaxLike() {
-	document.getElementById("like-button").style.display="none";
-	document.getElementById("dislike-button").style.display="inline";
+	document.getElementById('like-button').src = "http://127.0.0.1:8080/App/Views/img/dislike.png";
+	document.getElementsByTagName('button')[0].onclick = function() {ajaxDislike();};
+	document.getElementById('like-button').title = "Dislike";
     var el = document.getElementById("id-img");
     var id = "data=" + el.dataset.id;
     var xhr = new XMLHttpRequest();
@@ -18,8 +19,9 @@ function ajaxLike() {
 }
 
 function ajaxDislike() {
-	document.getElementById("like-button").style.display="inline";
-	document.getElementById("dislike-button").style.display="none";
+	document.getElementById('like-button').src = "http://127.0.0.1:8080/App/Views/img/like.png";
+	document.getElementsByTagName('button')[0].onclick = function() {ajaxLike();};
+	document.getElementById('like-button').title = "Like";
     var el = document.getElementById("id-img");
     var id = "data1=" + el.dataset.id;
     var xhr = new XMLHttpRequest();
