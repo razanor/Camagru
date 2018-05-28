@@ -6,7 +6,6 @@
 <link rel="stylesheet" href="/App/Views/css/photo.css">
 </head>
 <body>
-
 	<div class="booth">
 		<video autoplay="" id="video" width="400" height="300"></video>
 		<a href="#" id="capture" class="booth-capture-button">Take photo</a>

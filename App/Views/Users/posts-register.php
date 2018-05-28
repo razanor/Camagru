@@ -28,10 +28,10 @@
 <div class="main-posts">
 <div class="post-details">
 <div class="login-name">
-<p><?php echo $user['username']; ?></p>
-<span><?php echo $picture['creation'] ?></span>
+<p><?php echo htmlspecialchars($userComment); ?></p>
+<span><?php echo htmlspecialchars($picture['creation']); ?></span>
 </div>
-<img data-id="<?php echo $picture['id']?>" id="id-img" class="img"  src="<?php echo $picture['path']; ?>" style="width:90%">
+<img data-id="<?php echo htmlspecialchars($picture['id']);?>" id="id-img" class="img"  src="<?php echo htmlspecialchars($picture['path']); ?>" style="width:90%">
 <div class="img-like">
 <?php
 	$img = ($likesFlag === true)
@@ -47,18 +47,18 @@
 	: "Like"
 ;
 ?>
-<button onclick="<?php echo $onclick ?>"><img id="like-button" src="<?php echo $img ?>" alt="like" title="<?php echo $title ?>" width="50" height="50"></button>
+<button onclick="<?php echo htmlspecialchars($onclick); ?>"><img id="like-button" src="<?php echo htmlspecialchars($img); ?>" alt="like" title="<?php echo htmlspecialchars($title); ?>" width="50" height="50"></button>
 </div>
 <div class="like-quantities">
-	<p><span id="likes-number"><?php echo $picture['likes'] ?></span> likes</p>
+	<p><span id="likes-number"><?php echo htmlspecialchars($picture['likes']); ?></span> likes</p>
 </div>
 <div class="comments-box">
 	<textarea id="comment-box"></textarea>
 	<br>
 	<button id="submit-comment" type="button">Comment</button>
-	<div id="comments" data-parent="<?php echo $userName ?>">
+	<div id="comments" data-parent="<?php echo htmlspecialchars($userName); ?>">
 	<?php foreach ($comments as $comment): ?>
-	<p id="user"><b><?php echo $comment['username'] ?> - </b><?php echo $comment['comment'] ?></p>
+	<p id="user"><b><?php echo htmlspecialchars($comment['username']) ?> - </b><?php echo htmlspecialchars($comment['comment']) ?></p>
 	<?php endforeach; ?>
 	</div>
 	
@@ -69,6 +69,7 @@
 <footer>
 	<p>&#169 nrepak, 2018</p>
 </footer>
+
 <script src="/App/Views/js/like-comments.js"></script>
 </body>
 </html>

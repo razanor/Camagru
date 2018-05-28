@@ -30,8 +30,8 @@
 </div>
 
 <div class="main-login">
-<h3>Hello, <?php echo $user['username'];?>!</h3>
-	<form data-id="<?php echo $userId ?>" class="login-form form-edit" action="" method="post">
+<h3>Hello, <?php echo htmlspecialchars($user['username']);?>!</h3>
+	<form data-id="<?php echo htmlspecialchars($userId) ?>" class="login-form form-edit" action="" method="post">
 		<div class="update">
 		<?php if ($result == true): ?>
 		  <p>Update successfully</p>
@@ -41,7 +41,7 @@
 		<?php if (!empty($errors)): ?>
   	<ul>
       	<?php foreach ($errors as $error): ?>
-        	<li> <?php echo $error; ?></li>
+        	<li> <?php echo htmlspecialchars($error); ?></li>
       	<?php endforeach; ?>
   	</ul>
 	<?php endif; ?>
@@ -62,7 +62,7 @@
 			: 'Off'
 		;
 		?>
-		<input type="button" value="<?php echo $value ?>" id="onoff" onclick="notification()" title="Change notification">
+		<input type="button" value="<?php echo htmlspecialchars($value) ?>" id="onoff" onclick="notification()" title="Change notification">
 	</form>	
 </div>
 

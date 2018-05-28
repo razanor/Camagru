@@ -28,20 +28,20 @@
 <div class="main-posts">
 <div class="post-details">
 <div class="login-name">
-<p><?php echo $user['username']; ?></p>
-<span><?php echo $picture['creation'] ?></span>
+<p><?php echo htmlspecialchars($user['username']); ?></p>
+<span><?php echo htmlspecialchars($picture['creation']) ?></span>
 </div>
-<img class="img" src="<?php echo $picture['path']; ?>" style="width:90%">
+<img class="img" src="<?php echo htmlspecialchars($picture['path']); ?>" style="width:90%">
 <div class="img-like">
 <img src="/App/Views/img/like.png" alt="likes" width="50" height="50">
 </div>
 <div class="like-quantities">
-<p><?php echo $picture['likes'] ?> likes</p>
+<p><?php echo htmlspecialchars($picture['likes']) ?> likes</p>
 </div>
 <div class="comments-box">
 <div id="comments">
 	<?php foreach ($comments as $comment): ?>
-	<p id="user"><b><?php echo $comment['username'] ?> - </b><?php echo $comment['comment'] ?></p>
+	<p id="user"><b><?php echo htmlspecialchars($comment['username']) ?> - </b><?php echo htmlspecialchars($comment['comment']) ?></p>
 	<?php endforeach; ?>
 	</div>
 </div>

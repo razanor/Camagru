@@ -63,7 +63,7 @@ class PicturesController extends UsersController
             $img = str_replace('data:image/png;base64,', '', $img);
             $img = str_replace(' ', '+', $img);
             $data = base64_decode($img);
-            $file = ROOT . '/uploads/' . uniqid() . '.jpeg';
+            $file = ROOT . '/uploads/' . uniqid() . '.png';
             $success = file_put_contents($file, $data);
 
             // add path to database
@@ -101,10 +101,13 @@ class PicturesController extends UsersController
 
         $userId = Users::checkLogged();
         $picture = Pictures::getPhotoById($params[0]);
-        $user = Users::getUserNameById($picture['userId']);
+        $user = Users::getUserNameById($userId);
+        $userCom = Users:: getUserNameById($picture['userId']);
+
         $comments = Pictures::getCommentsById($params[0]);
         $likesFlag = Pictures::getUniqueLike($userId, $params[0]);
         $userName = $user['username'];
+        $userComment = $userCom['username']; 
 
         require_once (ROOT. '/App/Views/Users/posts-register.php');
 

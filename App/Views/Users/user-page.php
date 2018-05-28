@@ -32,7 +32,7 @@
 <div class="row">
 <?php foreach($pictures as $picture): ?> 
 		<div class="column">
-	<a title="View details" href="/user-page/post/<?php echo $picture['id'] ?>"><img class="img" src="<?php echo $picture['path']; ?>" style="width:100%"></a>
+	<a title="View details" href="/user-page/post/<?php echo htmlspecialchars($picture['id']) ?>"><img class="img" src="<?php echo htmlspecialchars($picture['path']); ?>" style="width:100%"></a>
 	</div>
 <?php endforeach; ?>
 </div>
