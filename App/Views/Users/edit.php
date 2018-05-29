@@ -47,6 +47,9 @@
 	<?php endif; ?>
 		</div>
 		<p>Modify user data</p>
+		<?php if ($mail === true): ?>
+		<p class="register" style="color:blue;">Confirmanition link has been sent to your email!</p><br>
+	<?php else: ?>
 		<input type="text" name="name" placeholder="Change username"><br><br>
 		<input type="submit" name="submit_name"><br><br>
 		<input type="email" name="email" placeholder="Change email"><br><br>
@@ -63,6 +66,7 @@
 		;
 		?>
 		<input type="button" value="<?php echo htmlspecialchars($value) ?>" id="onoff" onclick="notification()" title="Change notification">
+		<?php endif; ?>
 	</form>	
 </div>
 

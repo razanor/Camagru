@@ -133,19 +133,32 @@ class Users
       }
     }
 
-    public static function edit($id, $username, $email, $password) {
+    public static function edit($id, $username, $password) {
 
       $db = Db::getConnection();
 
-      $sql = "UPDATE users SET username = :username, email = :email, password = :password WHERE id = :id";
+      $sql = "UPDATE users SET username = :username, password = :password WHERE id = :id";
 
       $result = $db->prepare($sql);
       $result->bindParam(':id', $id, PDO::PARAM_INT);
       $result->bindParam(':username', $username, PDO::PARAM_STR);
-      $result->bindParam(':email', $email, PDO::PARAM_STR);
       $result->bindParam(':password', $password, PDO::PARAM_STR);
 
       return $result->execute();
+    }
+
+    public static function editEmail($id, $email) {
+
+      $db = Db::getConnection();
+      
+      $sql = "UPDATE users SET email = :email WHERE id = :id";
+
+      $result = $db->prepare($sql);
+      $result->bindParam(':id', $id, PDO::PARAM_INT);
+      $result->bindParam(':email', $email, PDO::PARAM_STR);
+      
+      return $result->execute();
+
     }
 
     public static function сomparePasswords($id, $password) {

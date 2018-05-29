@@ -238,10 +238,13 @@ class UsersController
         $email = $user['email'];
         $password = $user['password'];
         $notification = $user['notification'];
+        $activation = $user['activation'];
+        $hash = $user['hash'];
 
         $errors = array();
         $flag = 0;
         $result = false;
+        $mail = false;
 
         if (isset($_POST['submit_name'])) {
             $flag = 1;
@@ -255,7 +258,7 @@ class UsersController
         }
 
         if (isset($_POST['submit_email'])) {
-            $flag = 1;
+            $flag = 2;
             $email = $_POST['email'];
             if (!Users::checkEmail($email) ) {
                 $errors[] = "Wrong email";
@@ -281,7 +284,24 @@ class UsersController
             if (isset($_POST['submit_password'])) {
                 $password = hash("whirlpool", $password);
             }
-            $result = Users::edit($userId, $name, $email, $password);
+            $result = Users::edit($userId, $name, $password);
+        }
+
+        if (empty($errors) && $flag == 2) {
+            $subject = 'Email | Changing';
+            $message = '
+            
+           Your email has been changed.
+           <br>
+           Please click this link to activate your account:
+           <br>
+           <a href="http://127.0.0.1:8080/activation/'.$hash.'">Click here!</a>
+           
+           ';
+            $mail = self::mailSend($message, $email, $subject);
+            Users::setToActive($hash, 0);
+            $result = Users::editEmail($userId, $email);
+
         }
         require_once (ROOT. '/App/Views/Users/edit.php');
         return true;
