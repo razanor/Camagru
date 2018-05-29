@@ -28,6 +28,6 @@ if (is_dir($dir)) {
 mkdir($dir);
 
 echo "
-<h4>DB re-created</h4>
+<h4>Database re-created</h4>
 <a href='/'>Go to main page!</a>
 ";

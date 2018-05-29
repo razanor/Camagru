@@ -38,6 +38,15 @@ function ajaxDislike() {
 		xhr.send(id);
 }
 
+function escapeHtml(text) {
+	return text
+		.replace(/&/g, "&amp;")
+		.replace(/</g, "&lt;")
+		.replace(/>/g, "&gt;")
+		.replace(/"/g, "&quot;")
+		.replace(/'/g, "&#039;");
+  }
+
 let commentBox = document.getElementById('comment-box'),
 	button = document.getElementById('submit-comment');
     comments = document.getElementById('comments');
@@ -66,7 +75,7 @@ let commentBox = document.getElementById('comment-box'),
 	xhr.onload = function () {
 
 		let p = document.createElement('p');
-		p.innerHTML = '<b>' + user + '</b> - '  + commentBox.value;
+		p.innerHTML = '<b>' + escapeHtml(user) + '</b> - '  + escapeHtml(commentBox.value);
 
 		comments.appendChild(p);
 	};
