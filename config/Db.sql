@@ -13,7 +13,7 @@ CREATE TABLE  IF NOT EXISTS `camagru`.`users` (
   `password`      VARCHAR(512)    NOT NULL , 
   `hash`          VARCHAR(255)    NOT NULL , 
   `activation`    INT(2)          NOT NULL      DEFAULT '0', 
-  `notification`  INT             NOT NULL      DEFAULT '0', 
+  `notification`  INT             NOT NULL      DEFAULT '1', 
   `joined`        TIMESTAMP       NOT NULL      DEFAULT CURRENT_TIMESTAMP ,
 
   PRIMARY KEY (`id`)

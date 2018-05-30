@@ -323,37 +323,46 @@ footer > p {
 	border: 1px solid #FF9966;
 	border-radius: 8px;
 	width: 600px;
-	height: 70%;;
+	height: 80%;
 	margin: 20px;
 	padding-top: 5px;
-	position: relative;
 }
 
-.post-details > .img {
-	position: absolute;
+.img-like > .img {
+	display: block;
 	margin-top: 5px;
+	margin-left: 2.5%;
 	margin-bottom: 20px;
-	vertical-align: middle;
 	border-radius: 7px;
 	box-shadow: 2px 2px 2px 2px black;
-	left: 25px;
 }
 
 .login-name {
-	margin-left: 20px;
+	margin: auto;
 	font-family: "Segoe UI", Helvetica, Arial, sans-serif;
 }
 
+#userComment {
+	float: left;
+	margin-left: 3%;
+}
+
+#creation {
+	margin-left: 70%;
+}
+
+.clear {
+	clear: both;
+}
+
 .img-like {
-	position: absolute;
+
 	top: 490px;
 	margin-left: 20px;
 }
 
 .like-quantities {
-	position: absolute;
-	top: 520px;
-	margin-left: 20px;
+	display: block;
 }
 
 .img-like > button {
@@ -366,8 +375,22 @@ footer > p {
 }
 
 .comments-box {
-	position: absolute;
 	text-align: center;
-	top: 560px;
-	margin-left: 200px;
+	width: 100%;
+	height: 30%;
 }
+
+.comments-box > textarea::placeholder {
+	color: #FF9966;
+    opacity: 1; /* Firefox */
+}
+
+#comments {
+	width: 98%;
+	height: 100%;
+	overflow: auto;
+	margin: 10px;
+	text-align: left;
+	padding-left: 20px;
+}
+

@@ -151,7 +151,7 @@ class PicturesController extends UsersController
                 $subject = 'New comment';
                 $message = '
                 
-                Somebody likes your post. Please check it.
+                Somebody comment your post. Please check it.
                
                ';
                 $mail = UsersController::mailSend($message, $email, $subject);

@@ -1,5 +1,5 @@
 function ajaxLike() {
-	document.getElementById('like-button').src = "http://127.0.0.1:8080/App/Views/img/dislike.png";
+	document.getElementById('like-button').src = "/App/Views/img/dislike.png";
 	document.getElementsByTagName('button')[0].onclick = function() {ajaxDislike();};
 	document.getElementById('like-button').title = "Dislike";
     var el = document.getElementById("id-img");
@@ -19,7 +19,7 @@ function ajaxLike() {
 }
 
 function ajaxDislike() {
-	document.getElementById('like-button').src = "http://127.0.0.1:8080/App/Views/img/like.png";
+	document.getElementById('like-button').src = "/App/Views/img/like.png";
 	document.getElementsByTagName('button')[0].onclick = function() {ajaxLike();};
 	document.getElementById('like-button').title = "Like";
     var el = document.getElementById("id-img");
@@ -76,8 +76,9 @@ let commentBox = document.getElementById('comment-box'),
 
 		let p = document.createElement('p');
 		p.innerHTML = '<b>' + escapeHtml(user) + '</b> - '  + escapeHtml(commentBox.value);
-
+		
 		comments.appendChild(p);
+		document.getElementById("comment-box").value = "";
 	};
 	xhr.send(fd);
 });

@@ -28,15 +28,15 @@
 <div class="main-posts">
 <div class="post-details">
 <div class="login-name">
-<p><?php echo htmlspecialchars($user['username']); ?></p>
-<span><?php echo htmlspecialchars($picture['creation']) ?></span>
+<p id="userComment"><?php echo htmlspecialchars($user['username']); ?></p>
+<p id="creation"><?php echo htmlspecialchars($picture['creation']) ?><p>
+<div class="clear">
 </div>
-<img class="img" src="<?php echo htmlspecialchars($picture['path']); ?>" style="width:90%">
+</div>
 <div class="img-like">
+<img class="img" src="<?php echo htmlspecialchars($picture['path']); ?>" style="width:90%">
 <img src="/App/Views/img/like.png" alt="likes" width="50" height="50">
-</div>
-<div class="like-quantities">
-<p><?php echo htmlspecialchars($picture['likes']) ?> likes</p>
+<span class="like-quantities"><span id="likes-number"><?php echo htmlspecialchars($picture['likes']); ?></span> likes</span>
 </div>
 <div class="comments-box">
 <div id="comments">
