@@ -102,12 +102,19 @@ class PicturesController extends UsersController
         $userId = Users::checkLogged();
         $picture = Pictures::getPhotoById($params[0]);
         $user = Users::getUserNameById($userId);
-        $userCom = Users:: getUserNameById($picture['userId']);
-
+        $userCom = Users::getUserNameById($picture['userId']);
         $comments = Pictures::getCommentsById($params[0]);
         $likesFlag = Pictures::getUniqueLike($userId, $params[0]);
         $userName = $user['username'];
         $userComment = $userCom['username']; 
+        $userPicture = $picture['userId'];
+
+        if (isset($_POST['delete'])) {
+            Pictures::deleteCommentsById($params[0]);
+            Pictures::deleteLikesById($params[0]);
+            Pictures::deleteImgById($params[0]);
+            header("Location: /user-page/");
+        }
 
         require_once (ROOT. '/App/Views/Users/posts-register.php');
 

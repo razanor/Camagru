@@ -368,6 +368,7 @@ footer > p {
 .img-like > button {
 	border: none;
 	padding: 0;
+	display: block;
 }
 
 .img-like > button:focus {
@@ -394,3 +395,19 @@ footer > p {
 	padding-left: 20px;
 }
 
+
+.delete {
+	float: right;
+	margin-right: 5%;
+}
+.delete > input {
+	background-color: rgb(255, 0, 0);
+	border: none;
+	color: white;
+	padding: 10px 32px;
+	text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    cursor: pointer; 
+}

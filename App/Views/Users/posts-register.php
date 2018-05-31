@@ -49,6 +49,12 @@
 	: "Like"
 ;
 ?>
+<?php if ($userId === $userPicture) : ?>
+<form class="delete" action="" method="post">
+<input type="submit" name="delete" value="Delete">
+</form>
+<?php endif;?>
+
 <button onclick="<?php echo htmlspecialchars($onclick); ?>"><img id="like-button" src="<?php echo htmlspecialchars($img); ?>" alt="like" title="<?php echo htmlspecialchars($title); ?>" width="50" height="50"></button>
 <span class="like-quantities"><span id="likes-number"><?php echo htmlspecialchars($picture['likes']); ?></span> likes</span>
 </div>

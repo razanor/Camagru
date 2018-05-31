@@ -152,4 +152,45 @@ class Pictures
         return false;
         }   
     }
+
+    /**
+     * Delete
+     */
+    
+    public static function deleteCommentsById($imgId) {
+
+        $db = Db::getConnection();
+        
+        $sql = "DELETE FROM comments WHERE imgId = :imgId";
+
+        $result = $db->prepare($sql);
+        $result->bindParam(':imgId', $imgId, PDO::PARAM_INT);
+
+        return $result->execute();
+    }
+
+    public static function deleteLikesById($imgId) {
+
+        $db = Db::getConnection();
+        
+        $sql = "DELETE FROM likes WHERE imgId = :imgId";
+
+        $result = $db->prepare($sql);
+        $result->bindParam(':imgId', $imgId, PDO::PARAM_INT);
+
+        return $result->execute();
+    }
+
+    public static function deleteImgById($id) {
+
+        $db = Db::getConnection();
+        
+        $sql = "DELETE FROM images WHERE id = :id";
+
+        $result = $db->prepare($sql);
+        $result->bindParam(':id', $id, PDO::PARAM_INT);
+
+        return $result->execute();
+    }
+
 }
