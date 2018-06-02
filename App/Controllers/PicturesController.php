@@ -15,6 +15,7 @@ class PicturesController extends UsersController
 
         $userId = Users::checkLogged();
         $super = Pictures::getSuperImg();
+        $allPhotoByUser = Pictures::getAllPhotoByUserId($userId);
         
         if (isset($_POST['submit'])) {
             $file = $_FILES['file'];

@@ -1,18 +1,14 @@
-.main-picture {
-
-}
 
 .main-picture > form {
-	margin-top: 20px;
-}
-
-.booth {
-	width: 420px;
+	width: 550px;
 	background-color: #ccc;
 	border: 10px solid #ddd;
-	margin-top: 140px;
-	margin-left: 5%;
-	position: relative;
+	margin-top: 60px;
+	margin-left: 20%;
+}
+
+.main-picture {
+	position: relative;	
 }
 
 .booth-capture-button {
@@ -23,6 +19,8 @@
 	color: #fff;
 	text-align: center;
 	text-decoration: none;
+	width: 100%;
+	font-size: 20px;
 }
 
 #canvas {
@@ -34,4 +32,103 @@
 	width: 50px;
 	height: 50px;
 	visibility: hidden;
+}
+
+.thumbnails {
+	border: 5px solid #ddd;
+	border-radius: 7px;
+	position: absolute;
+	width: 310px;
+	height: 707px;
+	top: 20%;
+	right: 10%;
+	padding: 20px;
+	overflow: auto;
+}
+
+.each-thumbnails {
+	padding-bottom: 15px;
+}
+
+#testa {
+	display: none;
+}
+
+
+
+@media screen and (max-width: 1220px) {
+
+	.main-picture {
+		position: relative;
+	}
+    .main-picture > form {
+		width: 270px;
+		background-color: #ccc;
+		border: 10px solid #ddd;
+		margin-top: 50px;
+		margin-left: 20%;
+	}
+
+	#testa {
+	display: none;
+	}
+
+	
+	.main-picture > form > .list {
+		width: 20px;
+		height: 20px;
+	}
+
+	.booth-capture-button {
+		display: block;
+		margin: 10px 0;
+		padding: 10px 20px;
+		background-color: cornflowerblue;
+		color: #fff;
+		text-align: center;
+		text-decoration: none;
+		width: 100%;
+		font-size: 15px;
+	}
+
+	video {
+		width: 250px;
+		height: 200px;
+		
+	}
+
+	#photo {
+		width: 250px;
+		height: 200px;
+	}
+	#absol {
+		position: absolute;
+		width: 10px;
+		height: 10px;
+		visibility: hidden;
+	}
+	#absol > img {
+		width: 60px;
+		height: 60px;
+
+	}
+
+	.thumbnails {
+		position: absolute;
+		border: 2px solid #ddd;
+		border-radius: 4px;
+		width: 200px;
+		height: 307px;
+		padding: 20px;
+		left: 25%;
+		top: 106%;
+		overflow: auto;
+		
+	}
+
+	.each-thumbnails > img {
+		width: 150px;
+		height: 100px;
+	}
+
 }

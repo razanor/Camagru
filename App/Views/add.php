@@ -48,21 +48,29 @@
 </div>
 </div> -->
 <div class="main-picture">
-<div class="booth">
 <form action="" method="post" id="photo-list">
 	<?php foreach($super as $each): ?>
-	<input type="radio" name="1" value="<?php echo htmlspecialchars($each['id']); ?>" required><img src="<?php echo htmlspecialchars($each['path']); ?>" width="50" height="50">
+	<input type="radio" name="1" value="<?php echo htmlspecialchars($each['id']); ?>" required><img class="list" src="<?php echo htmlspecialchars($each['path']); ?>" width="70" height="70">
 	<?php endforeach ; ?>
 
-		<video autoplay="" id="video" width="400" height="300"></video>
-		<input type="submit" name="choose" value="Choose" id="capture" class="booth-capture-button">
-		<canvas id="canvas" width="400" height="300"></canvas>
+		<video autoplay="" id="video" width="520" height="380"></video>
+		<button type="submit" name="choose" value="Snap" id="capture" class="booth-capture-button">Snap</button>
+		<canvas id="canvas" width="390" height="300"></canvas>
 		<div id="absol">
 			<img id="super" src="">
 		</div>
-		<img id="photo" src="">
+		<div id="testa">
+		<img id="photo" src="" widht="380" height="400">
+		</div>
 		<a href="#" id="post" class="booth-capture-button" onclick="ajax()" style="display:none;">Post</a>
 </form>
+
+<div class="thumbnails">
+	<?php foreach ($allPhotoByUser as $each): ?>
+		<div class="each-thumbnails">
+			<img src="<?php echo htmlspecialchars($each['path']); ?>" width="250" height="200">
+		</div>		
+	<?php endforeach; ?>
 </div>
 </div>
 

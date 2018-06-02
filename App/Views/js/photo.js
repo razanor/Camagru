@@ -25,6 +25,7 @@
 		context.drawImage(video, 0, 0, 400, 300);
 		photo.setAttribute('src', canvas.toDataURL('image/png'));
 		document.getElementById("absol").style.visibility = "visible";
+		document.getElementById("testa").style.display = "block";
 		document.getElementById("super").setAttribute('src', "/App/Views/img/HTML5_Logo.png");
 		var b = document.querySelector('input[name="1"]:checked').value;
 		if (b == "1")

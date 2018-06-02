@@ -50,6 +50,21 @@ class Pictures
 
     }
 
+    public static function getAllPhotoByUserId($userId) {
+
+        $db = Db::getConnection();
+        
+        $sql = "SELECT * FROM images WHERE userId = :userId ORDER BY creation desc";
+        $result = $db->prepare($sql);
+        $result->bindParam(':userId', $userId, PDO::PARAM_INT);
+
+        $result->setFetchMode(PDO::FETCH_ASSOC);
+        $result->execute();
+
+        return $result->fetchAll();
+
+    }
+
     public static function getSuperImg() {
         
         $db = Db::getConnection();
