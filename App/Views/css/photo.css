@@ -1,8 +1,18 @@
+.main-picture {
+
+}
+
+.main-picture > form {
+	margin-top: 20px;
+}
+
 .booth {
-	width: 400px;
+	width: 420px;
 	background-color: #ccc;
 	border: 10px solid #ddd;
-	margin: 0 auto;
+	margin-top: 140px;
+	margin-left: 5%;
+	position: relative;
 }
 
 .booth-capture-button {
@@ -17,4 +27,11 @@
 
 #canvas {
 	display: none;
+}
+
+#absol {
+	position: absolute;
+	width: 50px;
+	height: 50px;
+	visibility: hidden;
 }

@@ -14,6 +14,7 @@ class PicturesController extends UsersController
      public function actionAdd() {
 
         $userId = Users::checkLogged();
+        $super = Pictures::getSuperImg();
         
         if (isset($_POST['submit'])) {
             $file = $_FILES['file'];
@@ -50,7 +51,7 @@ class PicturesController extends UsersController
                 $errors[] = "You cannot upload files of this type!";
             }
 
-        }
+        } 
         require_once (ROOT. '/App/Views/add.php');
     }
 
@@ -60,16 +61,29 @@ class PicturesController extends UsersController
         if (isset($_POST['data'])) {
             // convert from base64 to img
             $img = $_POST['data'];
+            $superPic = Pictures::getSuperById($_POST['img-id']);
+            $pathPic = $superPic['path'];
             $img = str_replace('data:image/png;base64,', '', $img);
             $img = str_replace(' ', '+', $img);
-            $data = base64_decode($img);
-            $file = ROOT . '/uploads/' . uniqid() . '.png';
-            $success = file_put_contents($file, $data);
+            $img = base64_decode($img);
+            $img1 = imagecreatefromstring($img);
+            $img2 = imagecreatefrompng(ROOT . $pathPic);
 
-            // add path to database
-            $file = substr(strrchr($file, "/"), 1);
-            $fileDestination = '/uploads/' .$file;
-            $result = Pictures::addPhoto($fileDestination, $userId);
+            if ($img1 && $img2) {
+                $x2 = imagesx($img2);
+                $y2 = imagesy($img2);
+                imagecopyresampled($img1, $img2, 0, 0, 0, 0, $x2, $y2, $x2, $y2);
+                //header("Content-type: image/jpeg");
+                $file = ROOT . '/uploads/' . uniqid() . '.png';
+                imagepng($img1, $file);
+                 // add path to database
+                $file = substr(strrchr($file, "/"), 1);
+                $fileDestination = '/uploads/' .$file;
+                $result = Pictures::addPhoto($fileDestination, $userId);
+            }
+            else {
+                echo "Something went wrong!";
+            }   
         }
         return true;
     }
@@ -113,6 +127,7 @@ class PicturesController extends UsersController
             Pictures::deleteCommentsById($params[0]);
             Pictures::deleteLikesById($params[0]);
             Pictures::deleteImgById($params[0]);
+            unlink(ROOT . $picture['path']);
             header("Location: /user-page/");
         }
 

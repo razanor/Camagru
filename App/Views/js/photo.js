@@ -20,20 +20,36 @@
 		// error.code
 	});
 
-	document.getElementById('capture').addEventListener('click', function() {
+	document.getElementById('photo-list').addEventListener('submit', function(event) {
+		event.preventDefault();
 		context.drawImage(video, 0, 0, 400, 300);
 		photo.setAttribute('src', canvas.toDataURL('image/png'));
+		document.getElementById("absol").style.visibility = "visible";
+		document.getElementById("super").setAttribute('src', "/App/Views/img/HTML5_Logo.png");
+		var b = document.querySelector('input[name="1"]:checked').value;
+		if (b == "1")
+			document.getElementById("super").setAttribute('src', "/App/Views/img/super/HTML5_Logo.png");
+		if (b == "2")
+			document.getElementById("super").setAttribute('src', "/App/Views/img/super/amazon.png");
+		if (b == "3")
+			document.getElementById("super").setAttribute('src', "/App/Views/img/super/facebook.png");
+		if (b == "4")
+			document.getElementById("super").setAttribute('src', "/App/Views/img/super/linkedin.png");
+		if (b == "5")
+			document.getElementById("super").setAttribute('src', "/App/Views/img/super/save.png");
+
 		document.getElementById("post").style.display="block";
 	});
 
 }) ();
 
 	function ajax() {
-		var data = "data=" + document.getElementById('photo').getAttribute('src');
+
+		let data = new FormData();
+		data.append('data', document.getElementById('photo').getAttribute('src'));
+		data.append('img-id', document.querySelector('input[name="1"]:checked').value);		
 		var xhr = new XMLHttpRequest();
 		xhr.open('POST', '/save-photo/', true);
-		xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-		xhr.setRequestHeader("Content-lenght", data.lenght);
 		xhr.onreadystatechange = function() {
 			if (xhr.readyState == 4 && xhr.status == 200) {
 				console.log(xhr.responseText);
@@ -42,3 +58,4 @@
 		}
 		xhr.send(data); 
 	}
+

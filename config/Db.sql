@@ -2,6 +2,7 @@ DROP TABLE IF EXISTS `camagru`.`users`;
 DROP TABLE IF EXISTS `camagru`.`images`;
 DROP TABLE IF EXISTS `camagru`.`comments`;
 DROP TABLE IF EXISTS `camagru`.`likes`;
+DROP TABLE IF EXISTS `camagru`.`super`;
 DROP DATABASE IF EXISTS `camagru`;
 
 CREATE DATABASE IF NOT EXISTS `camagru`;
@@ -44,4 +45,17 @@ CREATE TABLE  IF NOT EXISTS `camagru`.`comments` (
 CREATE TABLE  IF NOT EXISTS `camagru`.`likes` ( 
   `userId`        INT(11)         NOT NULL , 
   `imgId`         INT(11)         NOT NULL 
-  ); 
+  );
+
+CREATE TABLE IF NOT EXISTS `camagru`.`super` ( 
+  `id`            INT(11)         NOT NULL      AUTO_INCREMENT , 
+  `path`          VARCHAR(128)    NOT NULL ,
+
+  PRIMARY KEY (`id`)
+  );
+
+  INSERT INTO `camagru`.`super` (`id`, `path`) VALUES (NULL, '/App/Views/img/super/HTML5_Logo.png');
+  INSERT INTO `camagru`.`super` (`id`, `path`) VALUES (NULL, '/App/Views/img/super/amazon.png'); 
+  INSERT INTO `camagru`.`super` (`id`, `path`) VALUES (NULL, '/App/Views/img/super/facebook.png'); 
+  INSERT INTO `camagru`.`super` (`id`, `path`) VALUES (NULL, '/App/Views/img/super/linkedin.png'); 
+  INSERT INTO `camagru`.`super` (`id`, `path`) VALUES (NULL, '/App/Views/img/super/save.png'); 

@@ -50,6 +50,34 @@ class Pictures
 
     }
 
+    public static function getSuperImg() {
+        
+        $db = Db::getConnection();
+        
+        $sql = "SELECT * FROM super";
+        $result = $db->prepare($sql);
+
+        $result->setFetchMode(PDO::FETCH_ASSOC);
+        $result->execute();
+
+        return $result->fetchAll(); 
+    }
+
+    public static function getSuperById($id) {
+
+        $db = Db::getConnection();
+        
+        $sql = "SELECT * FROM super WHERE id = :id";
+        $result = $db->prepare($sql);
+
+        $result->bindParam(':id', $id, PDO::PARAM_INT);
+        $result->setFetchMode(PDO::FETCH_ASSOC);
+        $result->execute();
+
+        return $result->fetch(); 
+
+    }
+
     /**
      * Likes and comments
      */
