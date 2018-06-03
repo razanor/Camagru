@@ -79,6 +79,14 @@ class UsersController
                 $errors[] = "The password should be more than 6 symbols";
             }
 
+            if (!Users::checkPasswordNumbers($password)) {
+                $errors[] = "Password must include at least one number!";
+            }
+
+            if (!Users::checkPasswordLetters($password)) {
+                $errors[] = "Password must include at least one letter!";
+            }
+
             if (Users::checkEmailExists($email)) {
                 $errors[] = "This email is already in use";
             }
@@ -165,6 +173,14 @@ class UsersController
                     $errors[] = "The password should be more than 6 symbols";
                 }
 
+                if (!Users::checkPasswordNumbers($password)) {
+                    $errors[] = "Password must include at least one number!";
+                }
+
+                if (!Users::checkPasswordLetters($password)) {
+                    $errors[] = "Password must include at least one letter!";
+                }
+
                 if (strcmp($password, $password_repeat) !== 0) {
                     $errors[] = "Passwords don't match";
                 }
@@ -191,14 +207,6 @@ class UsersController
             $password = $_POST['password'];
 
             $errors = array();
-
-            if (!Users::checkName($name)) {
-                $errors[] = "The username should be more than 2 symbols";
-            }
-
-            if (!Users::checkPassword($password)) {
-                $errors[] = "The password should be more than 6 symbols";
-            }
 
             $userId = Users::check_user($name, hash('whirlpool', $password), 1);
 
@@ -275,6 +283,15 @@ class UsersController
             if (!Users::checkPassword($password)) {
                 $errors[] = "The new password should be more than 6 symbols";
             }
+
+            if (!Users::checkPasswordNumbers($password)) {
+                $errors[] = "Password must include at least one number!";
+            }
+
+            if (!Users::checkPasswordLetters($password)) {
+                $errors[] = "Password must include at least one letter!";
+            }
+
             if (!Users::сomparePasswords($userId, hash("whirlpool", $password_old))) {
                 $errors[] = "The old password doesn't match";
             }

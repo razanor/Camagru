@@ -3,7 +3,6 @@
 	width: 550px;
 	background-color: #ccc;
 	border: 10px solid #ddd;
-	margin-top: 60px;
 	margin-left: 20%;
 }
 
@@ -54,6 +53,10 @@
 	display: none;
 }
 
+.radio-super {
+	display: inline-block;
+}
+
 
 
 @media screen and (max-width: 1220px) {
@@ -65,7 +68,6 @@
 		width: 270px;
 		background-color: #ccc;
 		border: 10px solid #ddd;
-		margin-top: 50px;
 		margin-left: 20%;
 	}
 

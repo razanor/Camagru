@@ -21,6 +21,22 @@ class Users
       }
     }
 
+    public static function checkPasswordNumbers($password) {
+      if(!preg_match("#[0-9]+#", $password)) {
+        return false;
+      } else {
+        return true;
+      }
+    }
+
+    public static function checkPasswordLetters($password) {
+      if(!preg_match("#[a-z]+#", $password)) {
+        return false;
+      } else {
+        return true;
+      }
+    }
+
     public static function checkEmail($email) {
       if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
         return true;

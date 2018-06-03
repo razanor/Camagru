@@ -23,6 +23,11 @@ if (is_dir($dir)) {
             if (is_file($file))
             unlink($file); //delete file
         }
+    $files = glob($dir . '/.*'); //get all hidden file names
+    foreach($files as $file) {
+        if (is_file($file))
+        unlink($file); //delete file
+    }
 	rmdir($dir);
 }
 mkdir($dir);

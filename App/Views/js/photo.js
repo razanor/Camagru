@@ -20,6 +20,23 @@
 		// error.code
 	});
 
+	document.getElementById('uploada').addEventListener('click', function(event) {
+		document.getElementsByName('filetype')[0].value = "file";
+		document.getElementById('photo-list').submit();
+	});
+
+	var radio = document.getElementsByName("1");
+	for (let i = 0; i < radio.length; i++) {
+		radio[i].addEventListener('change', function(event) {
+		//document.getElementById('uploada').removeAttribute('disabled');
+		document.getElementById('choose-file').removeAttribute('disabled');
+		});
+	}
+	document.getElementById('choose-file').addEventListener("change", function(event) {
+		document.getElementById('uploada').removeAttribute('disabled');
+	});
+	
+
 	document.getElementById('photo-list').addEventListener('submit', function(event) {
 		event.preventDefault();
 		context.drawImage(video, 0, 0, 400, 300);

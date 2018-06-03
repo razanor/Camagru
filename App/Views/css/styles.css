@@ -323,7 +323,7 @@ footer > p {
 	border: 1px solid #FF9966;
 	border-radius: 8px;
 	width: 600px;
-	height: 80%;
+	height: 88%;
 	margin: 20px;
 	padding-top: 5px;
 }
@@ -410,4 +410,9 @@ footer > p {
     display: inline-block;
     font-size: 15px;
     cursor: pointer; 
+}
+
+.facebook {
+	display: block;
+	margin-left: 10px;
 }

@@ -58,6 +58,11 @@
 <button onclick="<?php echo htmlspecialchars($onclick); ?>"><img id="like-button" src="<?php echo htmlspecialchars($img); ?>" alt="like" title="<?php echo htmlspecialchars($title); ?>" width="50" height="50"></button>
 <span class="like-quantities"><span id="likes-number"><?php echo htmlspecialchars($picture['likes']); ?></span> likes</span>
 </div>
+<?php if ($userId === $userPicture) : ?>
+<div class="facebook">
+<?php include (ROOT . "/components/sharing.php"); ?>
+</div>
+<?php endif;?>
 <div class="comments-box">
 	<textarea id="comment-box" rows="3" cols="30" placeholder="Write anything you want!" maxlength="50"></textarea>
 	<br>

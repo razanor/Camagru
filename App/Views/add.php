@@ -29,9 +29,7 @@
 	</div>
 
 </div>
-<!-- <div class="main-photo">
-<div class="action-photo">
-<div class="upload-error">
+<div class="upload-error" style="margin: 5px;">
 <?php if (!empty($errors)): ?>
 			<ul>
 				<?php foreach ($errors as $error): ?>
@@ -40,15 +38,12 @@
 			</ul>
 				<?php endif; ?>
 </div>
-<form action="" method="post" enctype="multipart/form-data">
-<input type="file" name="file"><br><br>
-<input type="submit" name="submit" value="Upload">
-</form>
-<a href="/take-photo/"><img src="/App/Views/img/webcam.png" title="Use webcam" alt="Take photo" width="100" height="100"></a>
-</div>
-</div> -->
 <div class="main-picture">
-<form action="" method="post" id="photo-list">
+<form action="" method="post" id="photo-list" enctype="multipart/form-data" name="fff">
+		<input type="hidden" name="filetype" value="camera">
+		<input id="choose-file" type="file" name="file" disabled="disabled">
+		<input id="uploada" type="button" name="xxx" value="Upload" disabled="disabled"><br><br>
+
 	<?php foreach($super as $each): ?>
 	<input type="radio" name="1" value="<?php echo htmlspecialchars($each['id']); ?>" required><img class="list" src="<?php echo htmlspecialchars($each['path']); ?>" width="70" height="70">
 	<?php endforeach ; ?>

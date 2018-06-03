@@ -17,8 +17,10 @@ class PicturesController extends UsersController
         $super = Pictures::getSuperImg();
         $allPhotoByUser = Pictures::getAllPhotoByUserId($userId);
         
-        if (isset($_POST['submit'])) {
+        if (isset($_POST['filetype'])) {
             $file = $_FILES['file'];
+            $superPictures = Pictures::getSuperById($_POST['1']);
+            $pathPictures = $superPictures['path'];
             $errors = array();
 
             $fileName = $_FILES['file']['name'];
@@ -30,18 +32,32 @@ class PicturesController extends UsersController
             $fileActualExt = strtolower(end($fileExt));
 
             $allowed = array('jpg', 'jpeg', 'png');
-
             if (in_array($fileActualExt, $allowed)) {
                 if ($fileError === 0) {
-                    if ($fileSize < 500000) {
+                    if ($fileSize < 1000000) {
                         $fileNameNew = uniqid('', true).".".$fileActualExt;
                         $fileDestination = ROOT. '/uploads/' .$fileNameNew;
-                        move_uploaded_file($fileTmpName, $fileDestination);                   
-                        $fileDestination = substr(strrchr($fileDestination, "/"), 1);
+                        move_uploaded_file($fileTmpName, $fileDestination);
+                        if ($fileType == "image/jpeg")
+                            $img1 = imagecreatefromjpeg($fileDestination);
+                        else if ($fileType == "image/png")
+                            $img1 = imagecreatefrompng($fileDestination);
+                        $img2 = imagecreatefrompng(ROOT . $pathPictures);
 
-                        $fileDestination = '/uploads/' .$fileNameNew;
-                        $result = Pictures::addPhoto($fileDestination, $userId);
-                        header ("Location: /user-page/");
+                        if ($img1 && $img2) {
+                            $x2 = imagesx($img2);
+                            $y2 = imagesy($img2);
+                            imagecopyresampled($img1, $img2, 0, 0, 0, 0, $x2, $y2, $x2, $y2);
+                            imagepng($img1, $fileDestination);
+                            $fileDestination = substr(strrchr($fileDestination, "/"), 1);
+                             // add path to database
+                            $fileDestination = '/uploads/' .$fileDestination;
+                            $result = Pictures::addPhoto($fileDestination, $userId);
+                            header ("Location: /user-page/");
+                        }
+                        else {
+                            echo "Something went wrong!";
+                        }     
                     } else {
                         $errors[] = "Your file is too big!";
                     }
@@ -51,8 +67,8 @@ class PicturesController extends UsersController
             } else {
                 $errors[] = "You cannot upload files of this type!";
             }
-
         } 
+
         require_once (ROOT. '/App/Views/add.php');
     }
 
@@ -74,7 +90,6 @@ class PicturesController extends UsersController
                 $x2 = imagesx($img2);
                 $y2 = imagesy($img2);
                 imagecopyresampled($img1, $img2, 0, 0, 0, 0, $x2, $y2, $x2, $y2);
-                //header("Content-type: image/jpeg");
                 $file = ROOT . '/uploads/' . uniqid() . '.png';
                 imagepng($img1, $file);
                  // add path to database
