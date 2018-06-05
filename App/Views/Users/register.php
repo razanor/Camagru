@@ -37,12 +37,24 @@
 	<ul>
         	<?php foreach ($errors as $error): ?>
             	<li><?php echo htmlspecialchars($error); ?></li>
+				<?php break ; ?>
         	<?php endforeach; ?>
 	</ul>
 		<?php endif; ?>
 	</div>
-		<input type="text" name="name" placeholder="Username"><br><br>
-		<input type="email" name="email" placeholder="Email"><br><br>
+	<?php
+	$value1 = isset($_SESSION['name'])
+	? $_SESSION['name']
+	: ""
+;
+	$value2 = isset($_SESSION['email'])
+	? $_SESSION['email']
+	: ""
+	
+;
+?>	
+		<input type="text" name="name" placeholder="Username" value="<?php echo htmlspecialchars($value1) ?>"><br><br>
+		<input type="email" name="email" placeholder="Email" value="<?php echo htmlspecialchars($value2) ?>"><br><br>
   		<input type="password" name="password" placeholder="Password"><br><br>
 		<input type="password" name="password_repeat" placeholder="Repeat password"><br><br>
   		<input type="submit" name="submit" value="Sign up"><br><br>

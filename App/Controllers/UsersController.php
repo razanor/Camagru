@@ -61,16 +61,15 @@ class UsersController
 
         if (isset($_POST['submit'])) {
             $name = $_POST['name'];
+            $_SESSION['name'] = $name;
             $email = $_POST['email'];
+            $_SESSION['email'] = $email;
             $password = $_POST['password'];
             $password_repeat = $_POST['password_repeat'];
 
             $errors = array();
 
-            if (!Users::checkEmail($email)) {
-                $errors[] = "Wrong email";
-            }
-
+        
             if (!Users::checkName($name)) {
                 $errors[] = "The username should be more than 4 symbols";
             }
